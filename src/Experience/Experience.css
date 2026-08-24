@@ -1,0 +1,1108 @@
+/* =========================================================
+   EXPERIENCE SECTION
+========================================================= */
+
+.experience-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        130px 6% 150px;
+
+    overflow: hidden;
+
+    color: #f8fafc;
+
+    background:
+        linear-gradient(180deg,
+            #020617,
+            #03101f 50%,
+            #020617);
+}
+
+
+.experience-container {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin:
+        0 auto;
+}
+
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.experience-background {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+.experience-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.08;
+
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.15) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(56, 189, 248, 0.15) 1px,
+            transparent 1px);
+
+    background-size:
+        80px 80px;
+
+    animation:
+        experienceGridMove 35s linear infinite;
+}
+
+
+.experience-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter:
+        blur(130px);
+
+    opacity: 0.13;
+}
+
+
+.experience-glow-one {
+    width: 550px;
+    height: 550px;
+
+    top: 8%;
+    right: -180px;
+
+    background:
+        #0284c7;
+
+    animation:
+        experienceGlowA 16s ease-in-out infinite alternate;
+}
+
+
+.experience-glow-two {
+    width: 500px;
+    height: 500px;
+
+    bottom: 8%;
+    left: -180px;
+
+    background:
+        #2563eb;
+
+    animation:
+        experienceGlowB 20s ease-in-out infinite alternate;
+}
+
+
+
+/* Small moving data particles */
+
+.experience-packet {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        #38bdf8;
+
+    box-shadow:
+        0 0 14px #38bdf8;
+}
+
+
+.packet-one {
+    top: 22%;
+    left: 8%;
+
+    animation:
+        packetMoveOne 16s linear infinite;
+}
+
+
+.packet-two {
+    bottom: 20%;
+    right: 7%;
+
+    animation:
+        packetMoveTwo 19s linear infinite;
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.experience-header {
+    max-width: 850px;
+
+    margin-bottom:
+        120px;
+}
+
+
+.experience-number {
+    display: block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.95rem;
+
+    letter-spacing:
+        0.15em;
+}
+
+
+
+/* =========================================================
+   BIG EXPERIENCE TITLE
+========================================================= */
+
+.experience-title {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    margin:
+        0;
+
+    font-size:
+        clamp(4rem,
+            10vw,
+            9rem);
+
+    line-height:
+        0.9;
+
+    letter-spacing:
+        -7px;
+}
+
+
+.experience-title span {
+    display: inline-block;
+
+    opacity: 0;
+
+    transform:
+        translateY(55px);
+
+    filter:
+        blur(8px);
+
+    transition:
+        opacity 0.32s ease,
+
+        transform 0.42s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+
+        filter 0.42s ease;
+
+    transition-delay:
+        calc(var(--letter-index) * 65ms);
+}
+
+
+.experience-title.title-visible span {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    filter:
+        blur(0);
+}
+
+
+
+.experience-header h3 {
+    margin:
+        28px 0 15px;
+
+    font-size:
+        clamp(1.4rem,
+            3vw,
+            2.4rem);
+
+    letter-spacing:
+        -1px;
+}
+
+
+.experience-header h3 span {
+    color:
+        #38bdf8;
+}
+
+
+.experience-header p {
+    max-width:
+        640px;
+
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        1.04rem;
+
+    line-height:
+        1.75;
+}
+
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.experience-timeline {
+    position: relative;
+}
+
+
+.timeline-line {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 2px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(to bottom,
+            transparent,
+            #38bdf8 4%,
+            #38bdf8 96%,
+            transparent);
+
+    box-shadow:
+        0 0 16px rgba(56,
+            189,
+            248,
+            0.45);
+}
+
+
+
+/* =========================================================
+   EXPERIENCE ROW
+========================================================= */
+
+/*
+   IMPORTANT:
+
+   This creates the breathing room you asked for.
+
+   Each job receives its own 540px tall visual region,
+   preventing one role's keywords from mixing with the next.
+*/
+
+.experience-row {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 120px minmax(0, 1fr);
+
+    align-items: center;
+
+    min-height:
+        540px;
+
+    column-gap:
+        30px;
+}
+
+
+
+/* =========================================================
+   TIMELINE SIDE
+========================================================= */
+
+.timeline-side {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.timeline-left {
+    justify-content:
+        flex-end;
+}
+
+
+.timeline-right {
+    justify-content:
+        flex-start;
+}
+
+
+
+/* =========================================================
+   EXPERIENCE CARD
+========================================================= */
+
+.experience-card {
+    width:
+        min(500px,
+            100%);
+
+    padding:
+        30px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.24);
+
+    border-radius:
+        19px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15,
+                23,
+                42,
+                0.86),
+            rgba(3,
+                15,
+                30,
+                0.78));
+
+    backdrop-filter:
+        blur(17px);
+
+    box-shadow:
+        0 24px 70px rgba(0,
+            0,
+            0,
+            0.2);
+
+    transition:
+        transform 0.3s ease,
+
+        border-color 0.3s ease,
+
+        box-shadow 0.3s ease;
+}
+
+
+.experience-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(56,
+            189,
+            248,
+            0.5);
+
+    box-shadow:
+        0 30px 80px rgba(0,
+            0,
+            0,
+            0.28),
+
+        0 0 35px rgba(56,
+            189,
+            248,
+            0.06);
+}
+
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.experience-card-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+}
+
+
+.experience-card-number {
+    display: grid;
+
+    place-items: center;
+
+    width: 46px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.4);
+
+    border-radius:
+        7px;
+
+    color:
+        #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-weight:
+        700;
+}
+
+
+.experience-card h4 {
+    margin: 0;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        1.3rem;
+}
+
+
+
+/* =========================================================
+   COMPANY + DATE
+========================================================= */
+
+.experience-company,
+.experience-date {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top:
+        15px;
+
+    color:
+        #94a3b8;
+}
+
+
+.experience-company span {
+    color:
+        #38bdf8;
+}
+
+
+.experience-divider {
+    height: 1px;
+
+    margin:
+        22px 0;
+
+    background:
+        linear-gradient(90deg,
+            rgba(56,
+                189,
+                248,
+                0.25),
+            transparent);
+}
+
+
+
+/* =========================================================
+   BULLETS
+========================================================= */
+
+.experience-card ul {
+    margin:
+        0;
+
+    padding-left:
+        20px;
+
+    color:
+        #cbd5e1;
+}
+
+
+.experience-card li {
+    margin-bottom:
+        12px;
+
+    line-height:
+        1.6;
+}
+
+
+.experience-card li::marker {
+    color:
+        #38bdf8;
+}
+
+
+
+/* =========================================================
+   CENTER NODE
+========================================================= */
+
+.timeline-node {
+    position: relative;
+
+    z-index: 10;
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+.timeline-node-inner {
+    position: relative;
+
+    z-index: 2;
+
+    width: 76px;
+    height: 76px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid #38bdf8;
+
+    border-radius:
+        50%;
+
+    background:
+        #03101f;
+
+    color:
+        #38bdf8;
+
+    font-size:
+        1.7rem;
+
+    font-family:
+        monospace;
+
+    box-shadow:
+        0 0 28px rgba(56,
+            189,
+            248,
+            0.22);
+}
+
+
+.timeline-node-pulse {
+    position: absolute;
+
+    width: 76px;
+    height: 76px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.45);
+
+    border-radius:
+        50%;
+
+    animation:
+        timelinePulse 2.8s ease-out infinite;
+}
+
+
+
+/* =========================================================
+   FLOATING KEYWORDS
+========================================================= */
+
+.keyword-cloud {
+    position: relative;
+
+    width:
+        min(500px,
+            100%);
+
+    height:
+        230px;
+}
+
+
+.keyword-orbit {
+    position: absolute;
+
+    inset:
+        20px 10px;
+
+    border:
+        1px dashed rgba(56,
+            189,
+            248,
+            0.23);
+
+    border-radius:
+        50%;
+
+    animation:
+        keywordOrbitPulse 5s ease-in-out infinite;
+}
+
+
+
+/* Individual keyword pills */
+
+.keyword {
+    position: absolute;
+
+    z-index: 2;
+
+    padding:
+        9px 17px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.38);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(2,
+            6,
+            23,
+            0.82);
+
+    color:
+        #7dd3fc;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.82rem;
+
+    white-space:
+        nowrap;
+
+    box-shadow:
+        0 0 20px rgba(56,
+            189,
+            248,
+            0.07);
+}
+
+
+
+/*
+   Keywords move slowly.
+
+   These are intentionally NOT spinning quickly around
+   the orbit because visitors still need to read them.
+*/
+
+.keyword-1 {
+    top: 18px;
+    left: 12%;
+
+    animation:
+        keywordFloatA 6s ease-in-out infinite;
+}
+
+
+.keyword-2 {
+    top: 35px;
+    right: 8%;
+
+    animation:
+        keywordFloatB 7.5s ease-in-out infinite;
+}
+
+
+.keyword-3 {
+    bottom: 30px;
+    left: 18%;
+
+    animation:
+        keywordFloatB 8s ease-in-out infinite reverse;
+}
+
+
+.keyword-4 {
+    bottom: 18px;
+    right: 10%;
+
+    animation:
+        keywordFloatA 7s ease-in-out infinite reverse;
+}
+
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes timelinePulse {
+
+    0% {
+        transform:
+            scale(1);
+
+        opacity:
+            0.55;
+    }
+
+    100% {
+        transform:
+            scale(1.55);
+
+        opacity:
+            0;
+    }
+
+}
+
+
+@keyframes keywordFloatA {
+
+    0%,
+    100% {
+        transform:
+            translate(0,
+                0);
+    }
+
+    50% {
+        transform:
+            translate(14px,
+                -8px);
+    }
+
+}
+
+
+@keyframes keywordFloatB {
+
+    0%,
+    100% {
+        transform:
+            translate(0,
+                0);
+    }
+
+    50% {
+        transform:
+            translate(-11px,
+                9px);
+    }
+
+}
+
+
+@keyframes keywordOrbitPulse {
+
+    0%,
+    100% {
+        opacity:
+            0.45;
+
+        transform:
+            scale(0.98);
+    }
+
+    50% {
+        opacity:
+            0.8;
+
+        transform:
+            scale(1.01);
+    }
+
+}
+
+
+@keyframes experienceGridMove {
+
+    from {
+        background-position:
+            0 0,
+            0 0;
+    }
+
+    to {
+        background-position:
+            80px 80px,
+            80px 80px;
+    }
+
+}
+
+
+@keyframes experienceGlowA {
+
+    from {
+        transform:
+            translate(0,
+                0);
+    }
+
+    to {
+        transform:
+            translate(-100px,
+                80px);
+    }
+
+}
+
+
+@keyframes experienceGlowB {
+
+    from {
+        transform:
+            translate(0,
+                0);
+    }
+
+    to {
+        transform:
+            translate(110px,
+                -60px);
+    }
+
+}
+
+
+@keyframes packetMoveOne {
+
+    from {
+        transform:
+            translate(0,
+                0);
+    }
+
+    to {
+        transform:
+            translate(70vw,
+                200px);
+    }
+
+}
+
+
+@keyframes packetMoveTwo {
+
+    from {
+        transform:
+            translate(0,
+                0);
+    }
+
+    to {
+        transform:
+            translate(-65vw,
+                -180px);
+    }
+
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .experience-row {
+        grid-template-columns:
+            minmax(0,
+                1fr) 90px minmax(0,
+                1fr);
+
+        min-height:
+            580px;
+
+        column-gap:
+            18px;
+    }
+
+
+    .keyword-cloud {
+        height:
+            210px;
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .experience-section {
+        padding:
+            110px 6% 100px;
+    }
+
+
+    .experience-header {
+        margin-bottom:
+            80px;
+    }
+
+
+    .experience-title {
+        font-size:
+            clamp(3.4rem,
+                18vw,
+                5rem);
+
+        letter-spacing:
+            -4px;
+    }
+
+
+    .timeline-line {
+        left:
+            28px;
+    }
+
+
+    .experience-row {
+        display: block;
+
+        min-height:
+            auto;
+
+        margin-bottom:
+            110px;
+
+        padding-left:
+            70px;
+    }
+
+
+    .timeline-node {
+        position: absolute;
+
+        top: 28px;
+        left: 0;
+    }
+
+
+    .timeline-node-inner {
+        width:
+            56px;
+
+        height:
+            56px;
+
+        font-size:
+            1.2rem;
+    }
+
+
+    .timeline-node-pulse {
+        width:
+            56px;
+
+        height:
+            56px;
+    }
+
+
+    .timeline-side {
+        display: block;
+    }
+
+
+    /*
+       On mobile we always show the role card first,
+       followed by its keywords.
+
+       This is much easier to understand than left/right
+       alternation on a narrow screen.
+    */
+
+    .experience-left .timeline-left,
+
+    .experience-right .timeline-right {
+        margin-bottom:
+            28px;
+    }
+
+
+    .experience-card {
+        width:
+            100%;
+    }
+
+
+    .keyword-cloud {
+        width:
+            100%;
+
+        height:
+            190px;
+
+        margin-top:
+            30px;
+    }
+
+}

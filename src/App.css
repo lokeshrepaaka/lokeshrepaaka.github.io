@@ -1,0 +1,1708 @@
+.hero {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+
+  align-items: center;
+
+  padding: 0 8%;
+
+  overflow: hidden;
+
+  color: white;
+
+  isolation: isolate;
+
+  background:
+    radial-gradient(circle at 75% 45%,
+      rgba(14, 165, 233, 0.18),
+      transparent 28%),
+    radial-gradient(circle at 35% 80%,
+      rgba(59, 130, 246, 0.1),
+      transparent 35%),
+    linear-gradient(135deg,
+      #020617 0%,
+      #04142b 45%,
+      #071d38 70%,
+      #020617 100%);
+}
+
+
+/* =========================
+   BACKGROUND EFFECTS
+========================= */
+
+.background-effects {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* Animated blue glows */
+
+.glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.25;
+}
+
+
+.glow-one {
+  width: 450px;
+  height: 450px;
+
+  background: rgba(14, 165, 233, 0.4);
+
+  top: -150px;
+  right: 10%;
+
+  animation: glowMoveOne 12s ease-in-out infinite alternate;
+}
+
+
+.glow-two {
+  width: 350px;
+  height: 350px;
+
+  background: rgba(37, 99, 235, 0.3);
+
+  bottom: -120px;
+  left: 15%;
+
+  animation: glowMoveTwo 15s ease-in-out infinite alternate;
+}
+
+
+/* Fog layers */
+
+.fog {
+  position: absolute;
+
+  width: 800px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(ellipse,
+      rgba(148, 163, 184, 0.08),
+      transparent 70%);
+
+  filter: blur(35px);
+
+  opacity: 0.6;
+}
+
+
+.fog-one {
+  top: 15%;
+  left: -300px;
+
+  animation: fogMoveOne 30s linear infinite;
+}
+
+
+.fog-two {
+  bottom: 5%;
+  right: -350px;
+
+  animation: fogMoveTwo 36s linear infinite;
+}
+
+
+/* Tiny ambient particles */
+
+.particle {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #38bdf8;
+
+  box-shadow:
+    0 0 8px rgba(56, 189, 248, 0.8),
+    0 0 18px rgba(56, 189, 248, 0.4);
+
+  opacity: 0.6;
+
+  animation: particleFloat 7s ease-in-out infinite;
+}
+
+
+.particle-one {
+  top: 20%;
+  left: 15%;
+}
+
+
+.particle-two {
+  top: 65%;
+  left: 40%;
+
+  animation-delay: 1.5s;
+}
+
+
+.particle-three {
+  top: 30%;
+  right: 15%;
+
+  animation-delay: 3s;
+}
+
+
+.particle-four {
+  bottom: 20%;
+  right: 30%;
+
+  animation-delay: 4s;
+}
+
+
+.particle-five {
+  top: 12%;
+  left: 55%;
+
+  animation-delay: 2s;
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.intro {
+  margin-bottom: 16px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  color: #38bdf8;
+
+  letter-spacing: 0.04em;
+}
+
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(4rem, 7vw, 7.5rem);
+
+  line-height: 0.88;
+
+  letter-spacing: -5px;
+
+  font-weight: 800;
+
+  text-shadow:
+    0 0 35px rgba(56, 189, 248, 0.08);
+}
+
+
+.hero h2 {
+  margin-top: 30px;
+
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+
+  font-weight: 500;
+
+  color: #94a3b8;
+}
+
+
+.tagline {
+  margin-top: 28px;
+
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
+
+  line-height: 1.65;
+
+  color: #e2e8f0;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.hero-links {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+
+  margin-top: 36px;
+}
+
+
+.hero-links a {
+  color: #e2e8f0;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.hero-links a:hover {
+  color: #38bdf8;
+
+  transform: translateY(-3px);
+}
+
+
+.resume-link {
+  padding: 12px 22px;
+
+  border: 1px solid rgba(56, 189, 248, 0.7);
+
+  border-radius: 8px;
+
+  background: rgba(14, 165, 233, 0.08);
+
+  box-shadow:
+    0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+
+/* =========================
+   CLOUD / DEVOPS VISUAL
+========================= */
+
+.hero-visual {
+  position: relative;
+
+  height: 560px;
+
+  z-index: 2;
+}
+
+
+.cloud-glow {
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      rgba(56, 189, 248, 0.25),
+      rgba(56, 189, 248, 0.04) 55%,
+      transparent 72%);
+
+  filter: blur(25px);
+
+  animation: cloudPulse 4s ease-in-out infinite;
+}
+
+
+.cloud-core {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 8rem;
+
+  filter:
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.18)) drop-shadow(0 0 45px rgba(56, 189, 248, 0.3));
+
+  animation: cloudFloat 5s ease-in-out infinite;
+}
+
+
+.node {
+  position: absolute;
+
+  padding: 10px 16px;
+
+  min-width: 70px;
+
+  text-align: center;
+
+  border:
+    1px solid rgba(56, 189, 248, 0.28);
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(145deg,
+      rgba(15, 23, 42, 0.85),
+      rgba(15, 23, 42, 0.55));
+
+  backdrop-filter: blur(12px);
+
+  color: #e2e8f0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.9rem;
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.2),
+    inset 0 0 12px rgba(56, 189, 248, 0.025);
+
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.node:hover {
+  border-color: rgba(56, 189, 248, 0.8);
+
+  box-shadow:
+    0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+
+.aws {
+  top: 12%;
+  right: 8%;
+
+  animation-delay: 0.5s;
+}
+
+
+.docker {
+  top: 17%;
+  left: 5%;
+
+  animation-delay: 1.2s;
+}
+
+
+.kubernetes {
+  top: 48%;
+  left: -10%;
+
+  animation-delay: 2s;
+}
+
+
+.git {
+  top: 44%;
+  right: 0;
+
+  animation-delay: 2.6s;
+}
+
+
+.linux {
+  bottom: 12%;
+  left: 10%;
+
+  animation-delay: 1.6s;
+}
+
+
+.cicd {
+  bottom: 18%;
+  right: 5%;
+
+  animation-delay: 3.2s;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes cloudFloat {
+
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%) translateY(0);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%) translateY(-14px);
+  }
+}
+
+
+@keyframes nodeFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+
+@keyframes cloudPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+
+    transform:
+      translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%) scale(1.12);
+  }
+}
+
+
+@keyframes glowMoveOne {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-100px, 100px);
+  }
+}
+
+
+@keyframes glowMoveTwo {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(130px, -70px);
+  }
+}
+
+
+@keyframes fogMoveOne {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(160vw);
+  }
+}
+
+
+@keyframes fogMoveTwo {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-160vw);
+  }
+}
+
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-25px);
+
+    opacity: 0.9;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE
+   Tablet + Mobile
+========================= */
+
+@media (max-width: 900px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    padding:
+      130px 8% 70px;
+  }
+
+
+  .hero-content {
+    width: 100%;
+  }
+
+
+  .hero h1 {
+    font-size: clamp(3.4rem, 15vw, 5.2rem);
+
+    letter-spacing: -3px;
+
+    line-height: 0.9;
+  }
+
+
+  .hero h2 {
+    font-size: 1.25rem;
+
+    line-height: 1.4;
+  }
+
+
+  .tagline {
+    font-size: 1.05rem;
+
+    line-height: 1.6;
+  }
+
+
+  .hero-links {
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 32px;
+  }
+
+
+  .hero-visual {
+    width: 100%;
+
+    height: 420px;
+
+    margin-top: 45px;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+   Phones around 320px–480px
+========================= */
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+
+  .hero h1 {
+    font-size: clamp(3rem, 16vw, 4rem);
+
+    letter-spacing: -2px;
+  }
+
+
+  .hero h2 {
+    font-size: 1.1rem;
+  }
+
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+
+  .hero-links {
+    gap: 14px;
+  }
+
+
+  .hero-links a {
+    font-size: 0.95rem;
+  }
+
+
+  .resume-link {
+    padding:
+      11px 18px;
+  }
+
+
+  .hero-visual {
+    height: 360px;
+  }
+
+}
+
+/* =========================
+   INFRASTRUCTURE CONNECTIONS
+========================= */
+
+.connection-map {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+.connection-line {
+  stroke: rgba(56, 189, 248, 0.18);
+
+  stroke-width: 1.2;
+
+  stroke-dasharray: 7 10;
+
+  animation: connectionFlow 12s linear infinite;
+}
+
+
+.data-pulse {
+  fill: #38bdf8;
+
+  filter:
+    drop-shadow(0 0 4px #38bdf8) drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+
+  opacity: 0.95;
+}
+
+
+/* Different colors slightly vary the traffic */
+
+.pulse-two,
+.pulse-five {
+  fill: #60a5fa;
+}
+
+
+.pulse-three {
+  fill: #22d3ee;
+}
+
+
+/* =========================
+   NODE STATUS DOT
+========================= */
+
+.node-dot {
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-right: 8px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow:
+    0 0 6px rgba(34, 197, 94, 0.9),
+    0 0 12px rgba(34, 197, 94, 0.5);
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================
+   CLOUD STATUS
+========================= */
+
+.cloud-core {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.cloud-status {
+  margin-top: -18px;
+
+  padding: 4px 9px;
+
+  border:
+    1px solid rgba(34, 197, 94, 0.35);
+
+  border-radius: 20px;
+
+  background:
+    rgba(2, 6, 23, 0.8);
+
+  color: #86efac;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.6rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  box-shadow:
+    0 0 15px rgba(34, 197, 94, 0.08);
+}
+
+
+/* =========================
+   CONNECTION ANIMATIONS
+========================= */
+
+@keyframes connectionFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+
+@keyframes statusPulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.15);
+  }
+}
+
+/* ==========================================
+   HERO PARALLAX
+========================================== */
+
+.hero-visual {
+  --mouse-x: 0;
+  --mouse-y: 0;
+
+  position: relative;
+
+  height: 560px;
+
+  z-index: 2;
+
+  transform:
+    translate(calc(var(--mouse-x) * 6px),
+      calc(var(--mouse-y) * 6px));
+
+  transition: transform 0.15s ease-out;
+}
+
+
+/* ==========================================
+   TOPOLOGY BACKGROUND
+========================================== */
+
+.topology-grid {
+  position: absolute;
+
+  inset: 5%;
+
+  border-radius: 50%;
+
+  opacity: 0.14;
+
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.16) 1px,
+      transparent 1px),
+    linear-gradient(90deg,
+      rgba(56, 189, 248, 0.16) 1px,
+      transparent 1px);
+
+  background-size:
+    42px 42px;
+
+  mask-image:
+    radial-gradient(circle,
+      black 15%,
+      transparent 70%);
+
+  animation:
+    gridDrift 18s linear infinite;
+
+  transform:
+    translate(calc(var(--mouse-x) * -10px),
+      calc(var(--mouse-y) * -10px));
+}
+
+
+/* ==========================================
+   ORBITAL RINGS
+========================================== */
+
+.orbit {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(56, 189, 248, 0.15);
+
+  pointer-events: none;
+}
+
+
+.orbit-one {
+  width: 300px;
+  height: 300px;
+
+  transform:
+    translate(-50%, -50%) rotate(15deg);
+
+  border-top-color:
+    rgba(56, 189, 248, 0.7);
+
+  border-right-color:
+    transparent;
+
+  animation:
+    orbitSpinOne 18s linear infinite;
+}
+
+
+.orbit-two {
+  width: 390px;
+  height: 220px;
+
+  transform:
+    translate(-50%, -50%) rotate(-20deg);
+
+  border-left-color:
+    rgba(34, 211, 238, 0.55);
+
+  border-bottom-color:
+    transparent;
+
+  animation:
+    orbitSpinTwo 25s linear infinite reverse;
+}
+
+
+/* ==========================================
+   CONNECTIONS
+========================================== */
+
+.connection-map {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  transform:
+    translate(calc(var(--mouse-x) * -4px),
+      calc(var(--mouse-y) * -4px));
+}
+
+
+.connection-line {
+  fill: none;
+
+  stroke:
+    rgba(56, 189, 248, 0.22);
+
+  stroke-width: 1.3;
+
+  stroke-dasharray:
+    7 11;
+
+  animation:
+    connectionFlow 10s linear infinite;
+}
+
+
+.data-pulse {
+  fill: #38bdf8;
+
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(0 0 4px rgba(56, 189, 248, 1)) drop-shadow(0 0 12px rgba(56, 189, 248, 0.8));
+}
+
+
+.pulse-two {
+  fill: #60a5fa;
+}
+
+
+.pulse-three {
+  fill: #22d3ee;
+}
+
+
+/* ==========================================
+   CENTRAL CLOUD SYSTEM
+========================================== */
+
+.cloud-system {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 4;
+
+  transform:
+    translate(-50%, -50%) translate(calc(var(--mouse-x) * 14px),
+      calc(var(--mouse-y) * 14px));
+}
+
+
+/* Main cloud — this is now the exact center object */
+
+.cloud-core {
+  width: 170px;
+  height: 120px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      rgba(56, 189, 248, 0.14),
+      transparent 70%);
+
+  filter:
+    drop-shadow(0 0 24px rgba(56, 189, 248, 0.25));
+}
+
+
+/* Cloud symbol itself */
+
+.cloud-symbol {
+  font-size: 8rem;
+
+  line-height: 1;
+
+  transform: translateY(6px);
+
+  filter:
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.14)) drop-shadow(0 0 40px rgba(56, 189, 248, 0.35));
+}
+
+/* ==========================================
+   SYSTEM STATUS
+========================================== */
+
+.system-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 2px;
+
+  padding:
+    7px 12px;
+
+  border:
+    1px solid rgba(34, 197, 94, 0.26);
+
+  border-radius: 8px;
+
+  background:
+    rgba(2, 6, 23, 0.72);
+
+  backdrop-filter:
+    blur(10px);
+
+  box-shadow:
+    0 0 20px rgba(34, 197, 94, 0.07);
+}
+
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    #22c55e;
+
+  box-shadow:
+    0 0 10px rgba(34, 197, 94, 0.9);
+
+  animation:
+    statusPulse 1.8s ease-in-out infinite;
+}
+
+
+.system-status div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+.system-status strong {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.62rem;
+
+  color: #cbd5e1;
+
+  letter-spacing: 0.12em;
+}
+
+
+.system-status div span {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.58rem;
+
+  color: #86efac;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* ==========================================
+   DEVOPS NODES
+========================================== */
+
+.node {
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  cursor: default;
+
+  transform:
+    translate(calc(var(--mouse-x) * 7px),
+      calc(var(--mouse-y) * 7px));
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.node:hover {
+  border-color:
+    rgba(56, 189, 248, 0.9);
+
+  background:
+    rgba(14, 165, 233, 0.12);
+
+  box-shadow:
+    0 0 28px rgba(56, 189, 248, 0.2),
+    inset 0 0 14px rgba(56, 189, 248, 0.05);
+}
+
+
+.node:hover .node-dot {
+  background:
+    #38bdf8;
+
+  box-shadow:
+    0 0 8px #38bdf8,
+    0 0 16px rgba(56, 189, 248, 0.9);
+}
+
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes gridDrift {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      42px 42px,
+      42px 42px;
+  }
+}
+
+
+@keyframes orbitSpinOne {
+  from {
+    transform:
+      translate(-50%, -50%) rotate(15deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%) rotate(375deg);
+  }
+}
+
+
+@keyframes orbitSpinTwo {
+  from {
+    transform:
+      translate(-50%, -50%) rotate(-20deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%) rotate(340deg);
+  }
+}
+
+/* ==========================================
+   CUSTOM CURSOR
+========================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+  /* Hide the normal browser cursor */
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  .node {
+    cursor: none;
+  }
+
+
+  /* ----------------------------------------
+     SMALL CENTER DOT
+  ---------------------------------------- */
+
+  .cursor-dot {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 6px;
+    height: 6px;
+
+    margin-left: -3px;
+    margin-top: -3px;
+
+    border-radius: 50%;
+
+    background: #38bdf8;
+
+    box-shadow:
+      0 0 7px rgba(56, 189, 248, 1),
+      0 0 16px rgba(56, 189, 248, 0.65);
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    will-change: transform;
+  }
+
+
+  /* ----------------------------------------
+     TRAILING OUTER RING
+  ---------------------------------------- */
+
+  .cursor-ring {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 34px;
+    height: 34px;
+
+    margin-left: -17px;
+    margin-top: -17px;
+
+    border:
+      1px solid rgba(56, 189, 248, 0.65);
+
+    border-radius: 50%;
+
+    background:
+      rgba(56, 189, 248, 0.035);
+
+    box-shadow:
+      0 0 20px rgba(56, 189, 248, 0.12);
+
+    pointer-events: none;
+
+    z-index: 99998;
+
+    will-change: transform;
+
+    transition:
+      width 0.2s ease,
+      height 0.2s ease,
+      margin 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+
+  /* ----------------------------------------
+     EXPAND CURSOR ON INTERACTIVE ELEMENTS
+  ---------------------------------------- */
+
+  body:has(a:hover) .cursor-ring,
+  body:has(.node:hover) .cursor-ring {
+    width: 54px;
+    height: 54px;
+
+    margin-left: -27px;
+    margin-top: -27px;
+
+    border-color:
+      rgba(56, 189, 248, 0.95);
+
+    background:
+      rgba(56, 189, 248, 0.08);
+
+    box-shadow:
+      0 0 30px rgba(56, 189, 248, 0.2);
+  }
+}
+
+
+/* ==========================================
+   TOUCH DEVICES
+
+   Phones/tablets don't use mouse cursors,
+   so hide our custom cursor there.
+========================================== */
+
+@media (hover: none),
+(pointer: coarse) {
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* =========================================================
+   LIGHT THEME — HERO / PAGE
+========================================================= */
+
+html[data-theme="light"] .hero {
+  background:
+    radial-gradient(circle at 75% 45%,
+      rgba(14, 165, 233, 0.14),
+      transparent 30%),
+    radial-gradient(circle at 35% 80%,
+      rgba(125, 211, 252, 0.18),
+      transparent 35%),
+    linear-gradient(135deg,
+      #e0f2fe 0%,
+      #f0f9ff 45%,
+      #dbeafe 75%,
+      #f8fafc 100%);
+
+  color: #0f172a;
+}
+
+/* =========================================================
+   LIGHT THEME — HERO TEXT
+========================================================= */
+
+html[data-theme="light"] .intro {
+  color: #0284c7;
+}
+
+html[data-theme="light"] .hero h1 {
+  color: #0f172a;
+
+  text-shadow:
+    0 0 30px rgba(14, 165, 233, 0.06);
+}
+
+html[data-theme="light"] .hero h2 {
+  color: #475569;
+}
+
+html[data-theme="light"] .tagline {
+  color: #1e293b;
+}
+
+/* =========================================================
+   LIGHT THEME — HERO LINKS
+========================================================= */
+
+html[data-theme="light"] .hero-links a {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .hero-links a:hover {
+  color: #0284c7;
+}
+
+html[data-theme="light"] .resume-link {
+  border-color:
+    rgba(2, 132, 199, 0.55);
+
+  background:
+    rgba(255, 255, 255, 0.45);
+
+  box-shadow:
+    0 0 20px rgba(14, 165, 233, 0.08);
+}
+
+/* =========================================================
+   LIGHT THEME — DEVOPS NODES
+========================================================= */
+
+html[data-theme="light"] .node {
+  color: #0f172a;
+
+  border-color:
+    rgba(2, 132, 199, 0.25);
+
+  background:
+    linear-gradient(145deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(240, 249, 255, 0.62));
+
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"] .node:hover {
+  border-color:
+    rgba(2, 132, 199, 0.75);
+
+  background:
+    rgba(224, 242, 254, 0.9);
+
+  box-shadow:
+    0 0 25px rgba(14, 165, 233, 0.12);
+}
+
+/* =========================================================
+   LIGHT THEME — CLOUD / NETWORK
+========================================================= */
+
+html[data-theme="light"] .cloud-glow {
+  background:
+    radial-gradient(circle,
+      rgba(14, 165, 233, 0.18),
+      rgba(125, 211, 252, 0.08) 55%,
+      transparent 72%);
+}
+
+html[data-theme="light"] .connection-line {
+  stroke:
+    rgba(2, 132, 199, 0.28);
+}
+
+html[data-theme="light"] .orbit {
+  border-color:
+    rgba(2, 132, 199, 0.18);
+}
+
+html[data-theme="light"] .orbit-one {
+  border-top-color:
+    rgba(2, 132, 199, 0.65);
+
+  border-right-color:
+    transparent;
+}
+
+html[data-theme="light"] .orbit-two {
+  border-left-color:
+    rgba(14, 165, 233, 0.55);
+
+  border-bottom-color:
+    transparent;
+}
+
+/* =========================================================
+   LIGHT THEME — CENTRAL CLOUD
+========================================================= */
+
+html[data-theme="light"] .cloud-symbol {
+  color: #ffffff;
+
+  filter:
+    drop-shadow(0 0 12px rgba(14, 165, 233, 0.28)) drop-shadow(0 0 32px rgba(56, 189, 248, 0.18));
+}
+
+/* =========================================================
+   LIGHT THEME — BACKGROUND EFFECTS
+========================================================= */
+
+html[data-theme="light"] .glow-one {
+  background:
+    rgba(14, 165, 233, 0.18);
+}
+
+html[data-theme="light"] .glow-two {
+  background:
+    rgba(59, 130, 246, 0.12);
+}
+
+html[data-theme="light"] .fog {
+  opacity: 0.35;
+}
+
+html[data-theme="light"] .particle {
+  background: #0284c7;
+
+  box-shadow:
+    0 0 8px rgba(2, 132, 199, 0.6),
+    0 0 16px rgba(2, 132, 199, 0.25);
+}
+
+/* =========================================================
+   MOBILE HERO POLISH
+   Keeps the mobile hero compact without changing desktop.
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero {
+    padding:
+      112px 8% 48px;
+  }
+
+  .hero-links {
+    gap: 14px;
+
+    margin-top: 26px;
+  }
+
+  .hero-visual {
+    height: 340px;
+
+    margin-top: 24px;
+  }
+
+  .cloud-core {
+    width: 150px;
+    height: 104px;
+  }
+
+  .cloud-symbol {
+    font-size: 6.8rem;
+  }
+
+  .orbit-one {
+    width: 250px;
+    height: 250px;
+  }
+
+  .orbit-two {
+    width: 320px;
+    height: 180px;
+  }
+
+  .node {
+    padding: 8px 13px;
+
+    min-width: 62px;
+
+    font-size: 0.78rem;
+  }
+
+  .aws {
+    top: 10%;
+    right: 5%;
+  }
+
+  .docker {
+    top: 16%;
+    left: 2%;
+  }
+
+  .kubernetes {
+    top: 48%;
+    left: -4%;
+  }
+
+  .git {
+    top: 44%;
+    right: -1%;
+  }
+
+  .linux {
+    bottom: 10%;
+    left: 6%;
+  }
+
+  .cicd {
+    bottom: 14%;
+    right: 3%;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding:
+      104px 6% 42px;
+  }
+
+  .hero-links {
+    gap: 12px;
+  }
+
+  .hero-links a {
+    font-size: 0.9rem;
+  }
+
+  .resume-link {
+    padding:
+      10px 16px;
+  }
+
+  .hero-visual {
+    height: 320px;
+
+    margin-top: 18px;
+  }
+
+  .cloud-core {
+    width: 138px;
+    height: 96px;
+  }
+
+  .cloud-symbol {
+    font-size: 6.2rem;
+  }
+
+  .orbit-one {
+    width: 228px;
+    height: 228px;
+  }
+
+  .orbit-two {
+    width: 292px;
+    height: 165px;
+  }
+
+  .node {
+    padding: 7px 11px;
+
+    min-width: 58px;
+
+    font-size: 0.72rem;
+  }
+
+  .aws {
+    top: 8%;
+    right: 4%;
+  }
+
+  .docker {
+    top: 15%;
+    left: 1%;
+  }
+
+  .kubernetes {
+    top: 49%;
+    left: -3%;
+  }
+
+  .git {
+    top: 44%;
+    right: -2%;
+  }
+
+  .linux {
+    bottom: 9%;
+    left: 5%;
+  }
+
+  .cicd {
+    bottom: 12%;
+    right: 2%;
+  }
+
+}

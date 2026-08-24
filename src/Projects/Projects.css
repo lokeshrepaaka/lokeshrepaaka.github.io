@@ -1,0 +1,2303 @@
+/* =========================================================
+   PROJECTS SECTION
+========================================================= */
+
+.projects-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        130px 6% 150px;
+
+    overflow: hidden;
+
+    color:
+        #f8fafc;
+
+    background:
+        linear-gradient(180deg,
+            #020617,
+            #03101e 50%,
+            #020617);
+}
+
+
+.projects-container {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin:
+        0 auto;
+}
+
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.projects-background {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+
+/* ---------------------------------------------------------
+   MOVING GRID
+--------------------------------------------------------- */
+
+.projects-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity:
+        0.08;
+
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.18) 1px,
+            transparent 1px),
+
+        linear-gradient(90deg,
+            rgba(56, 189, 248, 0.18) 1px,
+            transparent 1px);
+
+    background-size:
+        80px 80px;
+
+    animation:
+        projectsGridMove 35s linear infinite;
+}
+
+
+
+/* ---------------------------------------------------------
+   BACKGROUND GLOWS
+--------------------------------------------------------- */
+
+.projects-glow {
+    position: absolute;
+
+    border-radius:
+        50%;
+
+    filter:
+        blur(140px);
+
+    opacity:
+        0.13;
+}
+
+
+.projects-glow-one {
+    width:
+        550px;
+
+    height:
+        550px;
+
+    top:
+        5%;
+
+    right:
+        -200px;
+
+    background:
+        #0ea5e9;
+
+    animation:
+        projectsGlowOne 18s ease-in-out infinite alternate;
+}
+
+
+.projects-glow-two {
+    width:
+        500px;
+
+    height:
+        500px;
+
+    bottom:
+        5%;
+
+    left:
+        -200px;
+
+    background:
+        #2563eb;
+
+    animation:
+        projectsGlowTwo 20s ease-in-out infinite alternate;
+}
+
+
+
+/* ---------------------------------------------------------
+   BACKGROUND DATA LINES
+--------------------------------------------------------- */
+
+.projects-data-line {
+    position: absolute;
+
+    width:
+        380px;
+
+    height:
+        1px;
+
+    opacity:
+        0.4;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            #38bdf8,
+            transparent);
+}
+
+
+.project-line-one {
+    top:
+        30%;
+
+    left:
+        -400px;
+
+    animation:
+        projectDataMoveRight 15s linear infinite;
+}
+
+
+.project-line-two {
+    bottom:
+        24%;
+
+    right:
+        -400px;
+
+    animation:
+        projectDataMoveLeft 18s linear infinite;
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.projects-header {
+    text-align:
+        center;
+
+    max-width:
+        900px;
+
+    margin:
+        0 auto 90px;
+}
+
+
+.projects-number {
+    display:
+        block;
+
+    margin-bottom:
+        15px;
+
+    color:
+        #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.16em;
+}
+
+
+
+/* =========================================================
+   PROJECTS TITLE
+========================================================= */
+
+.projects-title {
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    margin:
+        0;
+
+    font-size:
+        clamp(4rem,
+            9vw,
+            8rem);
+
+    line-height:
+        0.9;
+
+    letter-spacing:
+        -6px;
+}
+
+
+.projects-title span {
+    display:
+        inline-block;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(45px);
+
+    filter:
+        blur(7px);
+
+    transition:
+        opacity 0.3s ease,
+
+        transform 0.4s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+
+        filter 0.4s ease;
+
+    transition-delay:
+        calc(var(--project-letter) * 60ms);
+}
+
+
+.projects-title-visible span {
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+    filter:
+        blur(0);
+}
+
+
+.projects-subtitle {
+    margin:
+        25px auto 0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        1.1rem;
+
+    line-height:
+        1.7;
+}
+
+
+
+/* =========================================================
+   PROJECT 01
+========================================================= */
+
+.project-main {
+    display:
+        grid;
+
+    grid-template-columns:
+        0.9fr 1.3fr;
+
+    gap:
+        55px;
+
+    min-height:
+        600px;
+
+    padding:
+        45px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.26);
+
+    border-radius:
+        24px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15,
+                23,
+                42,
+                0.91),
+            rgba(4,
+                18,
+                35,
+                0.84));
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 30px 90px rgba(0,
+            0,
+            0,
+            0.25);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(70px);
+
+    transition:
+        opacity 0.65s ease,
+
+        transform 0.65s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+
+        border-color 0.3s ease,
+
+        box-shadow 0.3s ease;
+}
+
+
+.project-main-visible {
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.project-main:hover {
+    border-color:
+        rgba(56,
+            189,
+            248,
+            0.5);
+
+    box-shadow:
+        0 35px 110px rgba(0,
+            0,
+            0,
+            0.3),
+
+        0 0 45px rgba(56,
+            189,
+            248,
+            0.06);
+}
+
+
+
+/* =========================================================
+   MAIN PROJECT INFO
+========================================================= */
+
+.project-main-info {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+}
+
+
+.project-index {
+    color:
+        #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.project-main-info h3 {
+    margin:
+        18px 0 35px;
+
+    font-size:
+        clamp(2rem,
+            4vw,
+            3.5rem);
+
+    line-height:
+        1.05;
+}
+
+
+.project-info-block {
+    margin-bottom:
+        28px;
+}
+
+
+.project-info-label {
+    display:
+        block;
+
+    margin-bottom:
+        10px;
+
+    color:
+        #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        700;
+}
+
+
+.project-info-block p {
+    margin:
+        0;
+
+    color:
+        #cbd5e1;
+
+    line-height:
+        1.7;
+}
+
+
+
+/* =========================================================
+   TECH STACK
+========================================================= */
+
+.project-tech-section {
+    margin-top:
+        5px;
+}
+
+
+.project-tech-stack {
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
+
+    margin-top:
+        12px;
+}
+
+
+.project-tech-stack span,
+.project-card-tech span {
+    padding:
+        7px 11px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.2);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(56,
+            189,
+            248,
+            0.05);
+
+    color:
+        #bae6fd;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.73rem;
+}
+
+
+
+/* =========================================================
+   PROJECT BUTTON
+========================================================= */
+
+.project-actions {
+    margin-top:
+        35px;
+}
+
+
+.project-primary-link {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    padding:
+        13px 22px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.45);
+
+    border-radius:
+        10px;
+
+    color:
+        #7dd3fc;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        700;
+
+    transition:
+        transform 0.25s ease,
+
+        background 0.25s ease,
+
+        box-shadow 0.25s ease;
+}
+
+
+.project-primary-link:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(56,
+            189,
+            248,
+            0.08);
+
+    box-shadow:
+        0 0 28px rgba(56,
+            189,
+            248,
+            0.13);
+}
+
+
+
+/* =========================================================
+   ARCHITECTURE AREA
+========================================================= */
+
+.project-architecture {
+    position: relative;
+
+    min-height: 500px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.13);
+
+    border-radius: 20px;
+
+    background:
+        rgba(2, 6, 23, 0.42);
+}
+
+
+.architecture-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.12;
+
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.25) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(56, 189, 248, 0.25) 1px,
+            transparent 1px);
+
+    background-size:
+        45px 45px;
+}
+
+
+
+/* =========================================================
+   SVG ARCHITECTURE CONNECTION MAP
+========================================================= */
+
+/*
+   The key improvement:
+
+   Lines AND moving packets now use the same SVG paths.
+
+   This means a packet can no longer drift above/below a
+   connection line and every connection terminates exactly
+   where we define it.
+*/
+
+.architecture-map {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    pointer-events: none;
+}
+
+
+.architecture-path {
+    fill: none;
+
+    stroke:
+        rgba(56, 189, 248, 0.72);
+
+    stroke-width: 2.1;
+
+    vector-effect:
+        non-scaling-stroke;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    filter:
+        drop-shadow(0 0 5px rgba(56, 189, 248, 0.24));
+}
+
+
+.architecture-flow-dot {
+    fill: #67e8f9;
+
+    opacity: 0.88;
+
+    filter:
+        drop-shadow(0 0 4px #67e8f9) drop-shadow(0 0 8px rgba(56, 189, 248, 0.62));
+}
+
+
+
+/* =========================================================
+   ARCHITECTURE NODE
+========================================================= */
+
+.architecture-node {
+    position: absolute;
+
+    z-index: 3;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    /*
+       Every node is positioned by its CENTER.
+
+       This makes the SVG coordinates easier to match
+       precisely to each AWS service.
+    */
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.architecture-icon {
+    width: 70px;
+    height: 70px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.4);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(8, 47, 73, 0.9),
+            rgba(2, 6, 23, 0.92));
+
+    color: #67e8f9;
+
+    font-size: 1.8rem;
+
+    box-shadow:
+        0 0 26px rgba(56, 189, 248, 0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    animation:
+        architectureNodeBreath 4.5s ease-in-out infinite;
+}
+
+
+.architecture-node:hover .architecture-icon {
+    transform:
+        translateY(-5px) scale(1.06);
+
+    box-shadow:
+        0 0 32px rgba(56, 189, 248, 0.3);
+}
+
+
+.architecture-node small {
+    color: #cbd5e1;
+
+    font-size: 0.7rem;
+
+    white-space: nowrap;
+}
+
+
+
+/* =========================================================
+   REAL AWS SERVICE ICONS
+========================================================= */
+
+.aws-service-icon {
+    display: block;
+
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+.architecture-node:hover .aws-service-icon {
+    transform:
+        scale(1.1);
+
+    filter:
+        drop-shadow(0 0 9px rgba(56, 189, 248, 0.45));
+}
+
+
+.architecture-client-icon {
+    font-size: 2rem;
+}
+
+
+
+/* =========================================================
+   NODE POSITIONS
+========================================================= */
+
+/*
+   IMPORTANT — SHARED GEOMETRY
+
+   CSS node centers match the SVG viewBox coordinates:
+
+   Client      -> 18%, 50%  -> (180, 300)
+   CloudFront  -> 38%, 25%  -> (380, 150)
+   S3          -> 82%, 25%  -> (820, 150)
+   API Gateway -> 38%, 75%  -> (380, 450)
+   Lambda      -> 68%, 75%  -> (680, 450)
+   CloudWatch  -> 87%, 88%  -> (870, 528)
+
+   This makes the two Client branches symmetrical:
+
+   Client -> CloudFront = 250 viewBox units
+   Client -> API Gateway = 250 viewBox units
+
+   CloudFront -> S3 and API Gateway -> Lambda also share
+   identical Y coordinates, so those paths stay perfectly
+   horizontal.
+
+   Lines are drawn behind the service cards. The higher
+   z-index of each card hides the center-to-center portion,
+   making the visible line appear to meet the card edge.
+*/
+
+.node-client {
+    left: 18%;
+    top: 50%;
+}
+
+
+.node-cloudfront {
+    left: 38%;
+    top: 25%;
+}
+
+
+.node-s3 {
+    left: 82%;
+    top: 25%;
+}
+
+
+.node-api {
+    left: 38%;
+    top: 75%;
+}
+
+
+.node-lambda {
+    left: 68%;
+    top: 75%;
+}
+
+
+.node-cloudwatch {
+    left: 87%;
+    top: 88%;
+}
+
+
+/* =========================================================
+   SUPPORTING PROJECTS
+========================================================= */
+
+.supporting-projects {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,
+            minmax(0,
+                1fr));
+
+    gap:
+        22px;
+
+    margin-top:
+        30px;
+}
+
+
+.project-card {
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    min-height:
+        360px;
+
+    padding:
+        30px;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.16);
+
+    border-radius:
+        18px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15,
+                23,
+                42,
+                0.82),
+            rgba(4,
+                15,
+                29,
+                0.75));
+
+    opacity:
+        0;
+
+    transform:
+        translateY(55px);
+
+    transition:
+        opacity 0.55s ease,
+
+        transform 0.55s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+
+        border-color 0.3s ease,
+
+        box-shadow 0.3s ease;
+
+    transition-delay:
+        calc(var(--card-index) * 90ms);
+}
+
+
+.supporting-projects-visible .project-card {
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.project-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(56,
+            189,
+            248,
+            0.45);
+
+    box-shadow:
+        0 25px 70px rgba(0,
+            0,
+            0,
+            0.24),
+
+        0 0 30px rgba(56,
+            189,
+            248,
+            0.06);
+}
+
+
+
+/* =========================================================
+   CLICKABLE SUPPORTING PROJECT CARDS
+========================================================= */
+
+.project-card-clickable {
+    cursor: pointer;
+
+    outline: none;
+}
+
+
+.project-card-clickable:focus-visible {
+    border-color:
+        rgba(56, 189, 248, 0.75);
+
+    box-shadow:
+        0 0 0 3px rgba(56, 189, 248, 0.14),
+
+        0 25px 70px rgba(0, 0, 0, 0.24);
+}
+
+
+.project-card-clickable:active {
+    transform:
+        translateY(-4px) scale(0.985);
+}
+
+
+.project-expand-hint {
+    position: absolute;
+
+    top: 30px;
+    right: 86px;
+
+    color: #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.66rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.11em;
+
+    opacity: 0;
+
+    transform:
+        translateY(6px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.project-card-clickable:hover .project-expand-hint,
+
+.project-card-clickable:focus-visible .project-expand-hint {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* =========================================================
+   PROJECT CARD CONTENT
+========================================================= */
+
+.project-card-top {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+
+.project-card-icon {
+    width:
+        45px;
+
+    height:
+        45px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.25);
+
+    border-radius:
+        10px;
+
+    color:
+        #38bdf8;
+
+    font-family:
+        monospace;
+}
+
+
+.project-card h3 {
+    margin:
+        25px 0 14px;
+
+    font-size:
+        1.45rem;
+}
+
+
+.project-card p {
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    line-height:
+        1.65;
+}
+
+
+.project-card-tech {
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+
+    margin-top:
+        25px;
+}
+
+
+.project-card-link {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    width:
+        fit-content;
+
+    margin-top:
+        auto;
+
+    padding-top:
+        30px;
+
+    color:
+        #38bdf8;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        700;
+}
+
+
+.project-card-link span {
+    transition:
+        transform 0.25s ease;
+}
+
+
+.project-card-link:hover span {
+    transform:
+        translate(5px,
+            -5px);
+}
+
+
+
+/* =========================================================
+   EXPANDED PROJECT MODAL
+========================================================= */
+
+/*
+   This is the "system expansion" interaction used by
+   Projects 02, 03, and 04.
+
+   Sequence:
+   1. overlay fades + blurs background
+   2. modal expands from a smaller scale
+   3. cyan border glow settles in
+   4. scan line travels down once
+   5. modal content reveals in short stages
+*/
+
+.project-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 8000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 28px;
+
+    overflow-y: auto;
+
+    background:
+        rgba(2, 6, 23, 0.78);
+
+    backdrop-filter:
+        blur(13px);
+
+    animation:
+        projectModalOverlayIn 0.28s ease both;
+}
+
+
+.project-modal {
+    position: relative;
+
+    width:
+        min(820px,
+            100%);
+
+    margin: auto;
+
+    padding:
+        54px 54px 48px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.38);
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15, 23, 42, 0.985),
+            rgba(3, 16, 31, 0.985));
+
+    box-shadow:
+        0 38px 120px rgba(0, 0, 0, 0.58),
+
+        0 0 0 1px rgba(56, 189, 248, 0.05),
+
+        0 0 62px rgba(56, 189, 248, 0.12);
+
+    transform-origin:
+        center center;
+
+    animation:
+        projectModalExpand 0.5s cubic-bezier(0.16,
+            1,
+            0.3,
+            1) both;
+}
+
+
+/* Initial bright pulse around modal */
+
+.project-modal::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    z-index: -1;
+
+    border-radius: inherit;
+
+    border:
+        1px solid rgba(103, 232, 249, 0.7);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    animation:
+        projectModalBorderPulse 0.9s ease-out 0.08s 1;
+}
+
+
+
+/* ---------------------------------------------------------
+   ONE-TIME SCAN LINE
+--------------------------------------------------------- */
+
+.project-modal-scan {
+    position: absolute;
+
+    z-index: 5;
+
+    top: -30px;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    opacity: 0;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(103, 232, 249, 0.95),
+            transparent);
+
+    box-shadow:
+        0 0 14px rgba(56, 189, 248, 0.72),
+
+        0 0 34px rgba(56, 189, 248, 0.25);
+
+    pointer-events: none;
+
+    animation:
+        projectModalScan 0.95s ease-in-out 0.18s 1;
+}
+
+
+
+/* ---------------------------------------------------------
+   CLOSE BUTTON
+--------------------------------------------------------- */
+
+.project-modal-close {
+    position: absolute;
+
+    z-index: 10;
+
+    top: 20px;
+    right: 22px;
+
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid rgba(148, 163, 184, 0.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    color: #cbd5e1;
+
+    font-size: 1.55rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.28s ease,
+        background 0.25s ease;
+}
+
+
+.project-modal-close:hover {
+    color: #67e8f9;
+
+    border-color:
+        rgba(56, 189, 248, 0.65);
+
+    background:
+        rgba(56, 189, 248, 0.07);
+
+    transform:
+        rotate(90deg);
+}
+
+
+
+/* ---------------------------------------------------------
+   TOP NUMBER / HEADING
+--------------------------------------------------------- */
+
+.project-modal-number {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+
+.project-modal-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 34px;
+}
+
+
+.project-modal-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.32);
+
+    border-radius: 13px;
+
+    background:
+        rgba(56, 189, 248, 0.05);
+
+    color: #67e8f9;
+
+    font-family:
+        monospace;
+
+    font-size: 1.1rem;
+
+    box-shadow:
+        0 0 22px rgba(56, 189, 248, 0.08);
+}
+
+
+.project-modal-heading h3 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size:
+        clamp(2.25rem,
+            5vw,
+            4.25rem);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+
+/* ---------------------------------------------------------
+   MODAL CONTENT
+--------------------------------------------------------- */
+
+.project-modal-section {
+    margin-top: 28px;
+}
+
+
+.project-modal-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.73rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+
+.project-modal-section p {
+    margin: 0;
+
+    max-width: 720px;
+
+    color: #cbd5e1;
+
+    font-size: 1.02rem;
+
+    line-height: 1.75;
+}
+
+
+.project-modal-tech {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 13px;
+}
+
+
+.project-modal-tech span {
+    padding:
+        8px 13px;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.22);
+
+    border-radius: 999px;
+
+    background:
+        rgba(56, 189, 248, 0.06);
+
+    color: #bae6fd;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.77rem;
+}
+
+
+.project-modal-highlights {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,
+            minmax(0, 1fr));
+
+    gap:
+        10px 24px;
+
+    margin:
+        12px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.project-modal-highlights li {
+    position: relative;
+
+    padding-left: 17px;
+
+    color: #cbd5e1;
+
+    line-height: 1.55;
+}
+
+
+.project-modal-highlights li::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0.68em;
+    left: 0;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #38bdf8;
+
+    box-shadow:
+        0 0 8px rgba(56, 189, 248, 0.55);
+}
+
+
+
+/* ---------------------------------------------------------
+   GITHUB BUTTON
+--------------------------------------------------------- */
+
+.project-modal-actions {
+    margin-top: 34px;
+}
+
+
+.project-modal-actions a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        13px 20px;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.42);
+
+    border-radius: 10px;
+
+    color: #7dd3fc;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.project-modal-actions a:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(56, 189, 248, 0.08);
+
+    box-shadow:
+        0 0 28px rgba(56, 189, 248, 0.14);
+}
+
+
+.project-modal-actions a span {
+    transition:
+        transform 0.25s ease;
+}
+
+
+.project-modal-actions a:hover span {
+    transform:
+        translate(4px, -4px);
+}
+
+
+
+/* ---------------------------------------------------------
+   STAGGERED MODAL CONTENT
+--------------------------------------------------------- */
+
+.project-modal-stage {
+    opacity: 0;
+
+    transform:
+        translateY(18px);
+
+    animation:
+        projectModalContentIn 0.45s cubic-bezier(0.16,
+            1,
+            0.3,
+            1) forwards;
+}
+
+
+.modal-stage-1 {
+    animation-delay: 0.16s;
+}
+
+
+.modal-stage-2 {
+    animation-delay: 0.23s;
+}
+
+
+.modal-stage-3 {
+    animation-delay: 0.3s;
+}
+
+
+.modal-stage-4 {
+    animation-delay: 0.37s;
+}
+
+
+.modal-stage-5 {
+    animation-delay: 0.44s;
+}
+
+
+.modal-stage-6 {
+    animation-delay: 0.51s;
+}
+
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes projectModalOverlayIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes projectModalExpand {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(38px) scale(0.82);
+
+        filter:
+            blur(5px);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-4px) scale(1.012);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+
+        filter:
+            blur(0);
+    }
+
+}
+
+
+@keyframes projectModalBorderPulse {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.96);
+    }
+
+    35% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(1.025);
+    }
+
+}
+
+
+@keyframes projectModalScan {
+
+    0% {
+        top: 0;
+
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    88% {
+        opacity: 0.9;
+    }
+
+    100% {
+        top: 100%;
+
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes projectModalContentIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes projectsGridMove {
+
+    from {
+        background-position:
+            0 0,
+            0 0;
+    }
+
+    to {
+        background-position:
+            80px 80px,
+            80px 80px;
+    }
+
+}
+
+
+@keyframes projectsGlowOne {
+
+    from {
+        transform:
+            translate(0,
+                0);
+    }
+
+    to {
+        transform:
+            translate(-100px,
+                80px);
+    }
+
+}
+
+
+@keyframes projectsGlowTwo {
+
+    from {
+        transform:
+            translate(0,
+                0);
+    }
+
+    to {
+        transform:
+            translate(100px,
+                -70px);
+    }
+
+}
+
+
+@keyframes projectDataMoveRight {
+
+    from {
+        transform:
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(calc(100vw + 800px));
+    }
+
+}
+
+
+@keyframes projectDataMoveLeft {
+
+    from {
+        transform:
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(calc(-100vw - 800px));
+    }
+
+}
+
+
+@keyframes architectureNodeBreath {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 20px rgba(56, 189, 248, 0.08);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(56, 189, 248, 0.18);
+    }
+
+}
+
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+html[data-theme="light"] .project-modal-overlay {
+    background:
+        rgba(219, 234, 254, 0.72);
+}
+
+
+html[data-theme="light"] .project-modal {
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.985),
+            rgba(240, 249, 255, 0.985));
+
+    border-color:
+        rgba(2, 132, 199, 0.24);
+
+    box-shadow:
+        0 38px 100px rgba(15, 23, 42, 0.18),
+
+        0 0 45px rgba(14, 165, 233, 0.08);
+}
+
+
+html[data-theme="light"] .project-modal-heading h3 {
+    color: #0f172a;
+}
+
+
+html[data-theme="light"] .project-modal-section p,
+
+html[data-theme="light"] .project-modal-highlights li {
+    color: #334155;
+}
+
+
+html[data-theme="light"] .project-modal-tech span {
+    color: #0369a1;
+
+    background:
+        rgba(14, 165, 233, 0.06);
+}
+
+
+html[data-theme="light"] .project-modal-close {
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    color: #475569;
+}
+
+
+
+html[data-theme="light"] .projects-section {
+    color:
+        #0f172a;
+
+    background:
+        linear-gradient(180deg,
+            #f8fafc,
+            #e0f2fe 50%,
+            #f8fafc);
+}
+
+
+html[data-theme="light"] .projects-subtitle {
+    color:
+        #475569;
+}
+
+
+html[data-theme="light"] .project-main,
+html[data-theme="light"] .project-card {
+    background:
+        rgba(255,
+            255,
+            255,
+            0.8);
+
+    border-color:
+        rgba(2,
+            132,
+            199,
+            0.17);
+}
+
+
+html[data-theme="light"] .project-info-block p,
+html[data-theme="light"] .project-card p {
+    color:
+        #475569;
+}
+
+
+html[data-theme="light"] .project-architecture {
+    background:
+        rgba(240,
+            249,
+            255,
+            0.72);
+}
+
+
+html[data-theme="light"] .architecture-node small {
+    color:
+        #334155;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .project-main {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            45px;
+    }
+
+
+    .project-architecture {
+        min-height:
+            500px;
+    }
+
+
+    .supporting-projects {
+        grid-template-columns:
+            repeat(2,
+                minmax(0,
+                    1fr));
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .project-modal-overlay {
+        padding: 18px;
+    }
+
+
+    .project-modal {
+        padding:
+            48px 24px 30px;
+
+        border-radius: 20px;
+    }
+
+
+    .project-modal-heading {
+        align-items:
+            flex-start;
+
+        gap: 13px;
+
+        margin-bottom: 26px;
+    }
+
+
+    .project-modal-heading h3 {
+        font-size:
+            clamp(2rem,
+                10vw,
+                2.8rem);
+
+        letter-spacing: -1px;
+    }
+
+
+    .project-modal-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    .project-modal-highlights {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .project-expand-hint {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .projects-section {
+        padding:
+            110px 6% 100px;
+    }
+
+
+    .projects-header {
+        margin-bottom:
+            65px;
+    }
+
+
+    .projects-title {
+        font-size:
+            clamp(3.5rem,
+                18vw,
+                5rem);
+
+        letter-spacing:
+            -4px;
+    }
+
+
+    .project-main {
+        padding:
+            26px;
+
+        min-height:
+            auto;
+    }
+
+
+    /*
+       Architecture diagrams can become too crowded
+       on small screens.
+
+       We keep the architecture but slightly reduce
+       its size.
+    */
+
+    .project-architecture {
+        min-height:
+            440px;
+    }
+
+
+    .architecture-icon {
+        width:
+            55px;
+
+        height:
+            55px;
+
+        font-size:
+            1.35rem;
+    }
+
+
+    .aws-service-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .architecture-node small {
+        font-size:
+            0.6rem;
+    }
+
+
+    .supporting-projects {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+    }
+
+
+    .project-card {
+        min-height:
+            320px;
+    }
+
+}
+
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .projects-grid,
+    .projects-glow,
+    .projects-data-line,
+    .architecture-node .architecture-icon {
+        animation:
+            none !important;
+    }
+
+
+    .architecture-flow-dot {
+        display: none;
+    }
+
+
+    .projects-title span,
+    .project-main,
+    .project-card {
+        transition:
+            none;
+    }
+
+
+    .project-modal-overlay,
+    .project-modal,
+    .project-modal::before,
+    .project-modal-scan,
+    .project-modal-stage {
+        animation:
+            none !important;
+
+        opacity: 1;
+
+        transform: none;
+
+        filter: none;
+    }
+
+}

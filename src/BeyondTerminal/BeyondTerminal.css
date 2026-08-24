@@ -1,0 +1,2076 @@
+/* =========================================================
+   BEYOND THE TERMINAL — CINEMATIC 3D CARD DECK
+========================================================= */
+
+/*
+   This overlay is deliberately more expressive than the
+   technical sections of the portfolio.
+
+   Core idea:
+   - center story = sharp / bright / dominant
+   - side stories = smaller / blurred / darker
+   - clicking next makes the right story physically travel
+     into the center
+   - clicking previous mirrors the transition
+*/
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.beyond-overlay {
+    --story-accent: #38bdf8;
+    --incoming-accent: #38bdf8;
+
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 28px 3.5% 24px;
+
+    color: #f8fafc;
+
+    background:
+        rgba(2, 6, 23, 0.88);
+
+    backdrop-filter:
+        blur(18px);
+
+    animation:
+        beyondOverlayIn 0.32s ease both;
+
+    isolation:
+        isolate;
+}
+
+
+/* =========================================================
+   AMBIENT BACKGROUND
+========================================================= */
+
+.beyond-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 18% 26%,
+            color-mix(in srgb,
+                var(--story-accent) 18%,
+                transparent),
+            transparent 32%),
+        radial-gradient(circle at 82% 70%,
+            color-mix(in srgb,
+                var(--incoming-accent) 16%,
+                transparent),
+            transparent 34%),
+        linear-gradient(180deg,
+            rgba(15, 23, 42, 0.32),
+            rgba(2, 6, 23, 0.78));
+
+    transition:
+        background 0.5s ease;
+}
+
+
+.beyond-ambient::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.016),
+            transparent);
+
+    background-size:
+        180px 100%;
+
+    opacity:
+        0.42;
+
+    animation:
+        beyondAmbientDrift 11s linear infinite;
+}
+
+
+/* =========================================================
+   BACKGROUND TITLE
+========================================================= */
+
+.beyond-topbar {
+    position: relative;
+    z-index: 1;
+
+    width:
+        min(1380px, 100%);
+
+    margin:
+        0 auto -36px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 32px;
+
+    pointer-events: none;
+}
+
+
+.beyond-topbar>div {
+    max-width:
+        820px;
+
+    opacity:
+        0.92;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s ease;
+}
+
+
+.beyond-is-animating .beyond-topbar>div {
+    opacity:
+        0.52;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.beyond-kicker {
+    display: block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #a78bfa;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.23em;
+}
+
+
+.beyond-topbar h2 {
+    margin:
+        0;
+
+    font-size:
+        clamp(2.15rem,
+            4.3vw,
+            4.35rem);
+
+    line-height:
+        0.98;
+
+    letter-spacing:
+        -0.05em;
+}
+
+
+.beyond-topbar h2 span {
+    color:
+        #67e8f9;
+}
+
+
+.beyond-close {
+    pointer-events: auto;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    flex-shrink:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid rgba(148,
+            163,
+            184,
+            0.22);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(15,
+            23,
+            42,
+            0.72);
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        1.65rem;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.3s ease;
+}
+
+
+.beyond-close:hover {
+    color:
+        #67e8f9;
+
+    border-color:
+        rgba(103,
+            232,
+            249,
+            0.62);
+
+    background:
+        rgba(56,
+            189,
+            248,
+            0.08);
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* =========================================================
+   STAGE
+========================================================= */
+
+.beyond-stage {
+    position: relative;
+    z-index: 2;
+
+    width:
+        min(1500px, 100%);
+
+    min-height:
+        620px;
+
+    margin:
+        0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    perspective:
+        1800px;
+
+    transform-style:
+        preserve-3d;
+}
+
+
+/* =========================================================
+   CENTER CARD
+========================================================= */
+
+.beyond-main-card,
+.beyond-transition-card {
+    width:
+        min(1040px,
+            74vw);
+
+    min-height:
+        500px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0,
+            1.08fr) minmax(0,
+            0.92fr);
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid color-mix(in srgb,
+            var(--story-accent) 48%,
+            transparent);
+
+    border-radius:
+        28px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15,
+                23,
+                42,
+                0.985),
+            rgba(5,
+                15,
+                29,
+                0.985));
+
+    box-shadow:
+        0 42px 120px rgba(0,
+            0,
+            0,
+            0.48),
+        0 0 55px color-mix(in srgb,
+            var(--story-accent) 10%,
+            transparent);
+
+    outline:
+        none;
+}
+
+
+.beyond-main-card {
+    position: relative;
+    z-index: 6;
+
+    cursor: pointer;
+
+    transform:
+        translateZ(0);
+
+    transition:
+        transform 0.62s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+        filter 0.62s ease,
+        opacity 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+/* Current card exits toward a side */
+
+.beyond-moving-forward .beyond-main-card {
+    animation:
+        beyondCurrentExitLeft 0.62s cubic-bezier(0.16,
+            1,
+            0.3,
+            1) both;
+}
+
+
+.beyond-moving-backward .beyond-main-card {
+    animation:
+        beyondCurrentExitRight 0.62s cubic-bezier(0.16,
+            1,
+            0.3,
+            1) both;
+}
+
+
+
+.beyond-main-card:focus-visible {
+    outline:
+        2px solid color-mix(in srgb,
+            var(--story-accent) 72%,
+            white);
+
+    outline-offset:
+        5px;
+}
+
+
+.beyond-main-card:not(.beyond-is-animating):hover {
+    box-shadow:
+        0 46px 128px rgba(0,
+            0,
+            0,
+            0.52),
+        0 0 72px color-mix(in srgb,
+            var(--story-accent) 15%,
+            transparent);
+}
+
+/* =========================================================
+   ALTERNATING LAYOUT
+========================================================= */
+
+.beyond-layout-reverse .beyond-image-panel {
+    order:
+        2;
+}
+
+
+.beyond-layout-reverse .beyond-story-panel {
+    order:
+        1;
+}
+
+
+/* =========================================================
+   CENTER IMAGE PANEL
+========================================================= */
+
+.beyond-image-panel {
+    position: relative;
+
+    min-width:
+        0;
+
+    min-height:
+        500px;
+
+    padding:
+        0;
+
+    overflow:
+        hidden;
+
+    border:
+        0;
+
+    background:
+        #0f172a;
+
+    cursor:
+        pointer;
+
+    text-align:
+        left;
+}
+
+
+.beyond-main-image {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        500px;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform 0.9s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+        filter 0.4s ease;
+}
+
+
+.beyond-image-panel:hover .beyond-main-image {
+    transform:
+        scale(1.03);
+}
+
+
+.beyond-is-animating .beyond-main-image {
+    transform:
+        scale(1.055) translateX(-1.5%);
+}
+
+
+.beyond-moving-backward .beyond-main-image {
+    transform:
+        scale(1.055) translateX(1.5%);
+}
+
+
+.beyond-image-panel::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 58%,
+            rgba(2,
+                6,
+                23,
+                0.18));
+}
+
+
+.beyond-layout-reverse .beyond-image-panel::after {
+    background:
+        linear-gradient(270deg,
+            transparent 58%,
+            rgba(2,
+                6,
+                23,
+                0.18));
+}
+
+
+/* =========================================================
+   SECONDARY POLAROIDS
+========================================================= */
+
+.beyond-secondary-images {
+    position:
+        absolute;
+
+    right:
+        18px;
+
+    bottom:
+        48px;
+
+    z-index:
+        4;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    gap:
+        10px;
+}
+
+
+.beyond-secondary-images img {
+    --secondary-index:
+        0;
+
+    width:
+        112px;
+
+    aspect-ratio:
+        0.78;
+
+    object-fit:
+        cover;
+
+    padding:
+        6px;
+
+    border-radius:
+        8px;
+
+    background:
+        #f8fafc;
+
+    box-shadow:
+        0 14px 34px rgba(0,
+            0,
+            0,
+            0.28);
+
+    transform:
+        rotate(calc(-5deg + (var(--secondary-index) * 9deg)));
+
+    transition:
+        transform 0.45s ease;
+}
+
+
+.beyond-is-animating .beyond-secondary-images img {
+    transform:
+        rotate(calc(-9deg + (var(--secondary-index) * 12deg))) translateY(8px);
+}
+
+
+/* =========================================================
+   CLICK HINT
+========================================================= */
+
+.beyond-next-hint {
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    left:
+        22px;
+
+    bottom:
+        20px;
+
+    padding:
+        7px 10px;
+
+    border:
+        1px solid rgba(255,
+            255,
+            255,
+            0.16);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(2,
+            6,
+            23,
+            0.58);
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.82);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.61rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.11em;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* =========================================================
+   STORY PANEL
+========================================================= */
+
+.beyond-story-panel {
+    position:
+        relative;
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    padding:
+        50px 56px;
+
+    background:
+        radial-gradient(circle at 100% 0%,
+            color-mix(in srgb,
+                var(--story-accent) 10%,
+                transparent),
+            transparent 34%);
+}
+
+
+.beyond-story-number {
+    color:
+        color-mix(in srgb,
+            var(--story-accent) 78%,
+            white);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.15em;
+}
+
+
+.beyond-story-panel h3 {
+    margin:
+        18px 0 20px;
+
+    font-size:
+        clamp(2rem,
+            3.45vw,
+            3.55rem);
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.beyond-story-panel p {
+    margin:
+        0;
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.75;
+}
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.beyond-tags {
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+
+    margin-top:
+        28px;
+}
+
+
+.beyond-tags span {
+    padding:
+        7px 10px;
+
+    border:
+        1px solid color-mix(in srgb,
+            var(--story-accent) 34%,
+            transparent);
+
+    border-radius:
+        999px;
+
+    background:
+        color-mix(in srgb,
+            var(--story-accent) 7%,
+            transparent);
+
+    color:
+        #dbeafe;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.68rem;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.beyond-card-controls {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    margin-top:
+        auto;
+
+    padding-top:
+        34px;
+}
+
+
+.beyond-card-controls button {
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid rgba(148,
+            163,
+            184,
+            0.2);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(15,
+            23,
+            42,
+            0.64);
+
+    color:
+        #e2e8f0;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.beyond-card-controls button:hover:not(:disabled) {
+    color:
+        var(--story-accent);
+
+    border-color:
+        color-mix(in srgb,
+            var(--story-accent) 58%,
+            transparent);
+
+    transform:
+        scale(1.08);
+}
+
+
+.beyond-card-controls button:disabled {
+    opacity:
+        0.45;
+
+    cursor:
+        default;
+}
+
+
+.beyond-card-controls span {
+    color:
+        #64748b;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.68rem;
+}
+
+
+/* =========================================================
+   SIDE PREVIEW CARDS
+========================================================= */
+
+.beyond-side-card {
+    position:
+        absolute;
+
+    z-index:
+        8;
+
+    top:
+        50%;
+
+    width:
+        clamp(190px,
+            19vw,
+            255px);
+
+    aspect-ratio:
+        0.76;
+
+    padding:
+        0;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid rgba(148,
+            163,
+            184,
+            0.14);
+
+    border-radius:
+        22px;
+
+    background:
+        #0f172a;
+
+    cursor:
+        pointer;
+
+    opacity:
+        0.4;
+
+    filter:
+        blur(2.5px) saturate(0.62);
+
+    box-shadow:
+        0 24px 70px rgba(0,
+            0,
+            0,
+            0.34);
+
+    transition:
+        opacity 0.35s ease,
+        filter 0.35s ease,
+        transform 0.45s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+        border-color 0.35s ease;
+}
+
+
+.beyond-side-card:disabled {
+    pointer-events:
+        none;
+}
+
+
+.beyond-side-card:hover {
+    opacity:
+        0.76;
+
+    filter:
+        blur(0.4px) saturate(0.9);
+
+    border-color:
+        rgba(103,
+            232,
+            249,
+            0.28);
+}
+
+
+.beyond-side-card img {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+}
+
+
+.beyond-side-card::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(180deg,
+            transparent 46%,
+            rgba(2,
+                6,
+                23,
+                0.9));
+}
+
+
+.beyond-side-card span {
+    position:
+        absolute;
+
+    z-index:
+        2;
+
+    left:
+        18px;
+
+    bottom:
+        18px;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.82);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.66rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.beyond-side-left {
+    left:
+        0;
+
+    transform:
+        translate(-42%,
+            -50%) rotateY(10deg) scale(0.86);
+}
+
+
+.beyond-side-right {
+    right:
+        0;
+
+    transform:
+        translate(42%,
+            -50%) rotateY(-10deg) scale(0.86);
+}
+
+
+.beyond-side-left:hover {
+    transform:
+        translate(-36%,
+            -50%) rotateY(6deg) scale(0.91);
+}
+
+
+.beyond-side-right:hover {
+    transform:
+        translate(36%,
+            -50%) rotateY(-6deg) scale(0.91);
+}
+
+
+
+.beyond-side-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;
+
+    border-radius:
+        inherit;
+
+    pointer-events:
+        none;
+
+    box-shadow:
+        inset 0 0 0 0 rgba(103,
+            232,
+            249,
+            0);
+
+    transition:
+        box-shadow 0.28s ease;
+}
+
+
+.beyond-side-card:hover::before {
+    box-shadow:
+        inset 0 0 0 2px rgba(103,
+            232,
+            249,
+            0.34);
+}
+
+
+.beyond-side-card:hover span {
+    color:
+        #ffffff;
+}
+
+/* While animating, hide the source preview because the
+   transition-card becomes the moving copy. */
+
+.beyond-moving-forward .beyond-side-right {
+    opacity:
+        0;
+}
+
+
+.beyond-moving-backward .beyond-side-left {
+    opacity:
+        0;
+}
+
+
+/* =========================================================
+   MOVING TRANSITION CARD
+========================================================= */
+
+.beyond-transition-card {
+    position:
+        absolute;
+
+    z-index:
+        12;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    pointer-events:
+        none;
+
+    border-color:
+        color-mix(in srgb,
+            var(--incoming-accent) 56%,
+            transparent);
+
+    box-shadow:
+        0 54px 145px rgba(0,
+            0,
+            0,
+            0.56),
+        0 0 78px color-mix(in srgb,
+            var(--incoming-accent) 18%,
+            transparent);
+}
+
+
+/*
+   These panels intentionally contain less information than
+   the real card. During movement, the eye mainly needs:
+   image + title + shape.
+*/
+
+.beyond-transition-image {
+    min-height:
+        500px;
+
+    overflow:
+        hidden;
+}
+
+
+.beyond-transition-image img {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        500px;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+}
+
+
+.beyond-transition-story {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    padding:
+        50px 56px;
+
+    background:
+        radial-gradient(circle at 100% 0%,
+            color-mix(in srgb,
+                var(--incoming-accent) 12%,
+                transparent),
+            transparent 34%);
+}
+
+
+.beyond-transition-story>span {
+    color:
+        color-mix(in srgb,
+            var(--incoming-accent) 82%,
+            white);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.15em;
+}
+
+
+.beyond-transition-story h3 {
+    margin:
+        18px 0 20px;
+
+    font-size:
+        clamp(2rem,
+            3.45vw,
+            3.55rem);
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.beyond-transition-story p {
+    margin:
+        0;
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.75;
+}
+
+
+.beyond-layout-reverse .beyond-transition-image {
+    order:
+        2;
+}
+
+
+.beyond-layout-reverse .beyond-transition-story {
+    order:
+        1;
+}
+
+
+/* Incoming right preview → center */
+
+.beyond-transition-from-right {
+    animation:
+        beyondIncomingFromRight 0.62s cubic-bezier(0.16,
+            1,
+            0.3,
+            1) both;
+}
+
+
+/* Incoming left preview → center */
+
+.beyond-transition-from-left {
+    animation:
+        beyondIncomingFromLeft 0.62s cubic-bezier(0.16,
+            1,
+            0.3,
+            1) both;
+}
+
+
+/* =========================================================
+   LIGHT SWEEP / LANDING FLASH
+========================================================= */
+
+.beyond-light-sweep {
+    position:
+        absolute;
+
+    z-index:
+        18;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    width:
+        min(1040px,
+            74vw);
+
+    height:
+        500px;
+
+    border-radius:
+        28px;
+
+    pointer-events:
+        none;
+
+    overflow:
+        hidden;
+
+    transform:
+        translate(-50%,
+            -50%);
+}
+
+
+.beyond-light-sweep::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        -20%;
+
+    left:
+        -35%;
+
+    width:
+        28%;
+
+    height:
+        140%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255,
+                255,
+                255,
+                0.18),
+            color-mix(in srgb,
+                var(--incoming-accent) 34%,
+                transparent),
+            transparent);
+
+    filter:
+        blur(6px);
+
+    transform:
+        skewX(-16deg);
+
+    animation:
+        beyondSweep 0.62s ease both;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.beyond-pagination {
+    position:
+        relative;
+
+    z-index:
+        20;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin-top:
+        14px;
+}
+
+
+.beyond-dot {
+    width:
+        8px;
+
+    height:
+        8px;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(148,
+            163,
+            184,
+            0.34);
+
+    cursor:
+        pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.beyond-dot:hover:not(:disabled) {
+    transform:
+        scale(1.25);
+
+    background:
+        rgba(103,
+            232,
+            249,
+            0.72);
+}
+
+
+.beyond-dot:disabled {
+    cursor:
+        default;
+}
+
+
+.beyond-dot-active {
+    width:
+        28px;
+
+    background:
+        var(--story-accent);
+}
+
+
+/* =========================================================
+   KEYBOARD HINT
+========================================================= */
+
+.beyond-keyboard-hint {
+    position:
+        relative;
+
+    z-index:
+        20;
+
+    margin:
+        9px auto 0;
+
+    width:
+        fit-content;
+
+    color:
+        #475569;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.62rem;
+
+    letter-spacing:
+        0.08em;
+}
+
+
+.beyond-keyboard-hint span {
+    margin:
+        0 8px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes beyondOverlayIn {
+
+    from {
+        opacity:
+            0;
+    }
+
+    to {
+        opacity:
+            1;
+    }
+
+}
+
+
+@keyframes beyondAmbientDrift {
+
+    from {
+        transform:
+            translateX(-180px);
+    }
+
+    to {
+        transform:
+            translateX(180px);
+    }
+
+}
+
+
+/* Current center card leaves toward the left */
+
+@keyframes beyondCurrentExitLeft {
+
+    0% {
+        opacity:
+            1;
+
+        transform:
+            translateX(0) translateZ(0) rotateY(0deg) scale(1);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity:
+            0.22;
+
+        transform:
+            translateX(-52%) translateZ(-170px) rotateY(11deg) scale(0.82);
+
+        filter:
+            blur(4px) saturate(0.72);
+    }
+
+}
+
+
+/* Current center card leaves toward the right */
+
+@keyframes beyondCurrentExitRight {
+
+    0% {
+        opacity:
+            1;
+
+        transform:
+            translateX(0) translateZ(0) rotateY(0deg) scale(1);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity:
+            0.22;
+
+        transform:
+            translateX(52%) translateZ(-170px) rotateY(-11deg) scale(0.82);
+
+        filter:
+            blur(4px) saturate(0.72);
+    }
+
+}
+
+
+/* Right side preview grows and lands as the center card */
+
+@keyframes beyondIncomingFromRight {
+
+    0% {
+        opacity:
+            0.42;
+
+        transform:
+            translate(73%,
+                -50%) translateZ(-180px) rotateY(-12deg) scale(0.42);
+
+        filter:
+            blur(5px) saturate(0.65);
+    }
+
+    55% {
+        opacity:
+            1;
+
+        transform:
+            translate(-48%,
+                -50%) translateZ(22px) rotateY(1.8deg) scale(1.02);
+
+        filter:
+            blur(0) saturate(1);
+    }
+
+    100% {
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,
+                -50%) translateZ(0) rotateY(0deg) scale(1);
+
+        filter:
+            blur(0) saturate(1);
+    }
+
+}
+
+
+/* Left side preview grows and lands as the center card */
+
+@keyframes beyondIncomingFromLeft {
+
+    0% {
+        opacity:
+            0.42;
+
+        transform:
+            translate(-123%,
+                -50%) translateZ(-180px) rotateY(12deg) scale(0.42);
+
+        filter:
+            blur(5px) saturate(0.65);
+    }
+
+    55% {
+        opacity:
+            1;
+
+        transform:
+            translate(-52%,
+                -50%) translateZ(22px) rotateY(-1.8deg) scale(1.02);
+
+        filter:
+            blur(0) saturate(1);
+    }
+
+    100% {
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,
+                -50%) translateZ(0) rotateY(0deg) scale(1);
+
+        filter:
+            blur(0) saturate(1);
+    }
+
+}
+
+
+@keyframes beyondSweep {
+
+    0% {
+        opacity:
+            0;
+
+        transform:
+            translateX(0) skewX(-16deg);
+    }
+
+    25% {
+        opacity:
+            1;
+    }
+
+    100% {
+        opacity:
+            0;
+
+        transform:
+            translateX(520%) skewX(-16deg);
+    }
+
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+html[data-theme="light"] .beyond-overlay {
+    color:
+        #0f172a;
+
+    background:
+        rgba(226,
+            232,
+            240,
+            0.84);
+}
+
+
+html[data-theme="light"] .beyond-main-card,
+
+html[data-theme="light"] .beyond-transition-card {
+    background:
+        linear-gradient(145deg,
+            rgba(255,
+                255,
+                255,
+                0.99),
+            rgba(240,
+                249,
+                255,
+                0.99));
+
+    box-shadow:
+        0 34px 90px rgba(15,
+            23,
+            42,
+            0.16);
+}
+
+
+html[data-theme="light"] .beyond-story-panel p,
+
+html[data-theme="light"] .beyond-transition-story p {
+    color:
+        #475569;
+}
+
+
+html[data-theme="light"] .beyond-tags span {
+    color:
+        #334155;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .beyond-main-card,
+    .beyond-transition-card {
+
+        width:
+            min(860px,
+                80vw);
+
+        min-height:
+            480px;
+    }
+
+
+    .beyond-image-panel,
+    .beyond-main-image,
+    .beyond-transition-image,
+    .beyond-transition-image img {
+
+        min-height:
+            480px;
+    }
+
+
+    .beyond-story-panel,
+    .beyond-transition-story {
+
+        padding:
+            44px 36px;
+    }
+
+
+    .beyond-side-card {
+
+        width:
+            190px;
+
+        opacity:
+            0.3;
+    }
+
+
+    .beyond-light-sweep {
+
+        width:
+            min(860px,
+                80vw);
+
+        height:
+            480px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .beyond-overlay {
+
+        padding:
+            20px 16px 24px;
+    }
+
+
+    .beyond-topbar {
+
+        margin-bottom:
+            16px;
+    }
+
+
+    .beyond-topbar h2 {
+
+        font-size:
+            clamp(2rem,
+                11vw,
+                3rem);
+    }
+
+
+    .beyond-close {
+
+        width:
+            44px;
+
+        height:
+            44px;
+    }
+
+
+    .beyond-stage {
+
+        min-height:
+            auto;
+    }
+
+
+    .beyond-side-card {
+
+        display:
+            none;
+    }
+
+
+    .beyond-main-card {
+
+        width:
+            100%;
+
+        min-height:
+            auto;
+
+        grid-template-columns:
+            1fr;
+
+        border-radius:
+            22px;
+    }
+
+
+    /*
+       On mobile we intentionally remove the floating transition
+       duplicate. The normal center card stays readable and the
+       navigation still works.
+    */
+
+    .beyond-transition-card,
+    .beyond-light-sweep {
+
+        display:
+            none;
+    }
+
+
+    .beyond-moving-forward .beyond-main-card,
+
+    .beyond-moving-backward .beyond-main-card {
+
+        animation:
+            beyondMobileCardSwap 0.62s ease both;
+    }
+
+
+    .beyond-layout-reverse .beyond-image-panel,
+
+    .beyond-layout-reverse .beyond-story-panel {
+
+        order:
+            initial;
+    }
+
+
+    .beyond-image-panel,
+    .beyond-main-image {
+
+        min-height:
+            340px;
+    }
+
+
+    .beyond-main-image {
+
+        max-height:
+            420px;
+    }
+
+
+    .beyond-story-panel {
+
+        padding:
+            32px 26px;
+    }
+
+
+    .beyond-secondary-images img {
+
+        width:
+            85px;
+    }
+
+
+    .beyond-keyboard-hint {
+
+        display:
+            none;
+    }
+
+}
+
+
+@keyframes beyondMobileCardSwap {
+
+    0% {
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+        opacity:
+            0.28;
+
+        transform:
+            scale(0.97);
+    }
+
+    100% {
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .beyond-overlay,
+    .beyond-main-card,
+    .beyond-transition-card,
+    .beyond-light-sweep {
+
+        animation:
+            none !important;
+    }
+
+
+    .beyond-main-image,
+    .beyond-side-card,
+    .beyond-close,
+    .beyond-card-controls button,
+    .beyond-dot {
+
+        transition:
+            none !important;
+    }
+
+}
+
+
+/* =========================================================
+   CLICK BEHAVIOR CLARITY
+========================================================= */
+
+.beyond-overlay:not(.beyond-is-animating) .beyond-side-card {
+    pointer-events:
+        auto;
+}
+
+
+.beyond-overlay.beyond-is-animating .beyond-side-card {
+    pointer-events:
+        none;
+}
+
+
+/*
+   The entire main card is clickable now — image, title,
+   description, tags, and empty card space all advance.
+   Only the dedicated arrow buttons keep their own actions.
+*/
+.beyond-main-card .beyond-story-panel,
+
+.beyond-main-card .beyond-image-panel {
+    cursor:
+        pointer;
+}

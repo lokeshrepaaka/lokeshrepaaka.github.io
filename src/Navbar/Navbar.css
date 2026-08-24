@@ -1,0 +1,505 @@
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    padding: 14px 6%;
+
+    background:
+        rgba(2, 6, 23, 0.55);
+
+    backdrop-filter: blur(16px);
+
+    border-bottom:
+        1px solid rgba(148, 163, 184, 0.08);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   NAVBAR INNER LAYOUT
+========================================================= */
+
+.navbar-inner {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.navbar-logo {
+    flex-shrink: 0;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 1.15rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+
+.navbar-logo:hover {
+    transform: translateY(-2px);
+
+    text-shadow:
+        0 0 12px rgba(56, 189, 248, 0.65);
+}
+
+
+/* =========================================================
+   DESKTOP NAV LINKS
+========================================================= */
+
+.navbar-links {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(18px, 2.3vw, 34px);
+
+    margin-left: auto;
+}
+
+
+.navbar-links a {
+    position: relative;
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* Small animated underline */
+
+.navbar-links a::after {
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 100%;
+    height: 2px;
+
+    background: #38bdf8;
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition:
+        transform 0.25s ease;
+
+    border-radius: 10px;
+}
+
+
+.navbar-links a:hover {
+    color: #ffffff;
+}
+
+
+.navbar-links a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   NAVBAR RIGHT SIDE
+========================================================= */
+
+.navbar-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(15, 23, 42, 0.55);
+
+    color: #e2e8f0;
+
+    font-size: 1.05rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.theme-toggle:hover {
+    transform:
+        translateY(-2px) rotate(15deg);
+
+    border-color:
+        rgba(56, 189, 248, 0.75);
+
+    background:
+        rgba(56, 189, 248, 0.08);
+
+    box-shadow:
+        0 0 18px rgba(56, 189, 248, 0.12);
+}
+
+
+/* =========================================================
+   HAMBURGER BUTTON
+
+   Hidden on desktop.
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+
+.menu-toggle span {
+    display: block;
+
+    width: 22px;
+    height: 2px;
+
+    margin: 0 auto;
+
+    background: #e2e8f0;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   HAMBURGER → X ANIMATION
+========================================================= */
+
+.menu-open span:nth-child(1) {
+    transform:
+        translateY(7px) rotate(45deg);
+}
+
+
+.menu-open span:nth-child(2) {
+    opacity: 0;
+}
+
+
+.menu-open span:nth-child(3) {
+    transform:
+        translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE VERSION
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        padding:
+            12px 5%;
+    }
+
+
+    /* Show hamburger */
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    /* Navigation becomes dropdown menu */
+
+    .navbar-links {
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding:
+            10px 5% 20px;
+
+        background:
+            rgba(2, 6, 23, 0.95);
+
+        backdrop-filter: blur(20px);
+
+        border-bottom:
+            1px solid rgba(148, 163, 184, 0.1);
+
+        transform: translateY(-15px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+
+    /* Menu visible */
+
+    .navbar-links-open {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+    }
+
+
+    .navbar-links a {
+        width: 100%;
+
+        padding:
+            15px 4px;
+
+        border-bottom:
+            1px solid rgba(148, 163, 184, 0.07);
+
+        font-size: 1rem;
+    }
+
+
+    .navbar-links a:last-child {
+        border-bottom: none;
+    }
+
+
+    .navbar-links a::after {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   LIGHT THEME NAVBAR
+========================================================= */
+
+html[data-theme="light"] .navbar {
+    background:
+        rgba(240, 249, 255, 0.72);
+
+    border-bottom:
+        1px solid rgba(15, 23, 42, 0.08);
+}
+
+
+html[data-theme="light"] .navbar-links a {
+    color: #334155;
+}
+
+
+html[data-theme="light"] .navbar-links a:hover {
+    color: #0369a1;
+}
+
+
+html[data-theme="light"] .theme-toggle {
+    background:
+        rgba(255, 255, 255, 0.7);
+
+    color: #0f172a;
+
+    border-color:
+        rgba(14, 165, 233, 0.22);
+}
+
+
+html[data-theme="light"] .menu-toggle span {
+    background: #0f172a;
+}
+
+
+@media (max-width: 850px) {
+
+    html[data-theme="light"] .navbar-links {
+        background:
+            rgba(240, 249, 255, 0.97);
+    }
+
+}
+
+/* =========================================================
+   LIGHT THEME — LOGO
+========================================================= */
+
+html[data-theme="light"] .navbar-logo {
+    color: #0369a1;
+
+    text-shadow: none;
+}
+
+/* =========================================================
+   SCROLL PERCENTAGE
+========================================================= */
+
+.navbar-scroll-percent {
+    min-width: 82px;
+
+    color: #67e8f9;
+
+    font-family:
+        "Cascadia Code",
+        "Cascadia Mono",
+        Consolas,
+        "SFMono-Regular",
+        Menlo,
+        Monaco,
+        monospace;
+
+    font-size: 0.76rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.035em;
+
+    text-align: right;
+
+    opacity: 0.82;
+
+    user-select: none;
+
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.navbar-scroll-percent:hover {
+    color: #ecfeff;
+
+    opacity: 1;
+}
+
+
+/* Light theme */
+
+html[data-theme="light"] .navbar-scroll-percent {
+    color: #0284c7;
+
+    opacity: 0.9;
+}
+
+
+/* Mobile:
+   Keep it on the same single navbar row.
+*/
+
+@media (max-width: 850px) {
+
+    .navbar-scroll-percent {
+        min-width: 74px;
+
+        font-size: 0.72rem;
+    }
+
+}

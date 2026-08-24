@@ -1,0 +1,1896 @@
+/* =========================================================
+   CONTACT — TECHNICAL CONTACT CONSOLE
+========================================================= */
+
+
+.contact-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        120px 6% 100px;
+
+    overflow:
+        hidden;
+
+    color:
+        #e2e8f0;
+
+    background:
+        linear-gradient(180deg,
+            #020817 0%,
+            #030b1a 100%);
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.contact-background {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+.contact-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity:
+        0.12;
+
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.12) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(56, 189, 248, 0.12) 1px,
+            transparent 1px);
+
+    background-size:
+        52px 52px;
+
+    mask-image:
+        linear-gradient(to bottom,
+            transparent,
+            black 22%,
+            black 78%,
+            transparent);
+}
+
+
+.contact-glow {
+    position: absolute;
+
+    width:
+        440px;
+
+    height:
+        440px;
+
+    border-radius:
+        50%;
+
+    filter:
+        blur(110px);
+
+    opacity:
+        0.12;
+}
+
+
+.contact-glow-one {
+    top:
+        8%;
+
+    left:
+        -7%;
+
+    background:
+        #0ea5e9;
+}
+
+
+.contact-glow-two {
+    right:
+        -10%;
+
+    bottom:
+        2%;
+
+    background:
+        #22d3ee;
+}
+
+
+.contact-network-line {
+    position: absolute;
+
+    left:
+        8%;
+
+    right:
+        8%;
+
+    top:
+        52%;
+
+    height:
+        1px;
+
+    opacity:
+        0.36;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(56, 189, 248, 0.35),
+            rgba(34, 211, 238, 0.5),
+            transparent);
+}
+
+
+.contact-packet {
+    position: absolute;
+
+    top:
+        50%;
+
+    left:
+        0;
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        #67e8f9;
+
+    box-shadow:
+        0 0 16px rgba(103,
+            232,
+            249,
+            0.95);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(-50%);
+}
+
+
+.contact-visible .contact-packet {
+    animation:
+        contactPacketTravel 5.5s linear infinite;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.contact-container {
+    position: relative;
+
+    z-index:
+        2;
+
+    width:
+        min(1280px,
+            100%);
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.contact-header {
+    max-width:
+        790px;
+
+    margin-bottom:
+        54px;
+}
+
+
+.contact-number,
+.contact-card-kicker,
+.contact-terminal-label {
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.15em;
+}
+
+
+.contact-number {
+    display: inline-block;
+
+    margin-bottom:
+        15px;
+
+    color:
+        #38bdf8;
+
+    font-size:
+        0.74rem;
+}
+
+
+.contact-header h2 {
+    margin:
+        0;
+
+    font-size:
+        clamp(3.4rem,
+            7vw,
+            7rem);
+
+    line-height:
+        0.9;
+
+    letter-spacing:
+        -0.06em;
+
+    color:
+        #f8fafc;
+}
+
+
+.contact-header h2 span {
+    color:
+        #67e8f9;
+}
+
+
+.contact-header p {
+    max-width:
+        620px;
+
+    margin:
+        24px 0 0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        1.05rem;
+
+    line-height:
+        1.75;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.contact-layout {
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0,
+            1.45fr) minmax(300px,
+            0.75fr);
+
+    gap:
+        28px;
+
+    align-items:
+        stretch;
+}
+
+
+/* =========================================================
+   SHARED CARD LOOK
+========================================================= */
+
+.contact-form-card,
+.contact-info-card,
+.contact-links-card {
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.16);
+
+    border-radius:
+        24px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(8,
+                18,
+                35,
+                0.94),
+            rgba(4,
+                12,
+                26,
+                0.96));
+
+    box-shadow:
+        0 30px 90px rgba(0,
+            0,
+            0,
+            0.28);
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.contact-form-card {
+    padding:
+        34px;
+}
+
+
+.contact-card-heading {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        24px;
+
+    margin-bottom:
+        30px;
+}
+
+
+.contact-terminal-label {
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #22d3ee;
+
+    font-size:
+        0.68rem;
+}
+
+
+.contact-card-heading h3 {
+    margin:
+        0;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        1.65rem;
+}
+
+
+.contact-endpoint {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid rgba(148,
+            163,
+            184,
+            0.16);
+
+    border-radius:
+        999px;
+
+    color:
+        #64748b;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.58rem;
+
+    transition:
+        color 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+
+.contact-endpoint-dot {
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        #64748b;
+
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.contact-endpoint-ready {
+    color:
+        #67e8f9;
+
+    border-color:
+        rgba(34,
+            211,
+            238,
+            0.34);
+
+    background:
+        rgba(34,
+            211,
+            238,
+            0.05);
+}
+
+
+.contact-endpoint-ready .contact-endpoint-dot {
+    background:
+        #22d3ee;
+
+    box-shadow:
+        0 0 12px rgba(34,
+            211,
+            238,
+            0.8);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.contact-form-card form {
+    display:
+        grid;
+
+    gap:
+        23px;
+}
+
+
+.contact-form-card label {
+    display:
+        grid;
+
+    gap:
+        8px;
+}
+
+
+.contact-form-card label>span {
+    color:
+        #38bdf8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.contact-form-card input,
+.contact-form-card textarea {
+    width:
+        100%;
+
+    border:
+        1px solid rgba(148,
+            163,
+            184,
+            0.14);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(15,
+            23,
+            42,
+            0.62);
+
+    color:
+        #f8fafc;
+
+    font: inherit;
+
+    outline:
+        none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.contact-form-card input {
+    height:
+        54px;
+
+    padding:
+        0 16px;
+}
+
+
+.contact-form-card textarea {
+    min-height:
+        170px;
+
+    padding:
+        16px;
+
+    resize:
+        vertical;
+}
+
+
+.contact-form-card input::placeholder,
+.contact-form-card textarea::placeholder {
+    color:
+        #475569;
+}
+
+
+.contact-form-card input:focus,
+.contact-form-card textarea:focus {
+    border-color:
+        rgba(56,
+            189,
+            248,
+            0.72);
+
+    background:
+        rgba(15,
+            23,
+            42,
+            0.84);
+
+    box-shadow:
+        0 0 0 3px rgba(56,
+            189,
+            248,
+            0.08),
+        0 0 24px rgba(56,
+            189,
+            248,
+            0.08);
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.contact-submit {
+    min-height:
+        56px;
+
+    margin-top:
+        4px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    border:
+        1px solid rgba(103,
+            232,
+            249,
+            0.45);
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(90deg,
+            rgba(14,
+                165,
+                233,
+                0.14),
+            rgba(34,
+                211,
+                238,
+                0.2));
+
+    color:
+        #ecfeff;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.76rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.contact-submit:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #67e8f9;
+
+    background:
+        linear-gradient(90deg,
+            rgba(14,
+                165,
+                233,
+                0.24),
+            rgba(34,
+                211,
+                238,
+                0.3));
+
+    box-shadow:
+        0 12px 34px rgba(34,
+            211,
+            238,
+            0.12);
+}
+
+
+.contact-submit-arrow {
+    transition:
+        transform 0.25s ease;
+}
+
+
+.contact-submit:hover .contact-submit-arrow {
+    transform:
+        translateX(5px);
+}
+
+
+.contact-submit-status {
+    margin:
+        0;
+
+    color:
+        #67e8f9;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.66rem;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.contact-side {
+    display:
+        grid;
+
+    gap:
+        28px;
+
+    grid-template-rows:
+        1fr auto;
+}
+
+
+.contact-info-card,
+.contact-links-card {
+    padding:
+        30px;
+}
+
+
+.contact-card-kicker {
+    display:
+        block;
+
+    margin-bottom:
+        24px;
+
+    color:
+        #38bdf8;
+
+    font-size:
+        0.66rem;
+}
+
+
+.contact-detail {
+    display:
+        grid;
+
+    grid-template-columns:
+        44px 1fr;
+
+    gap:
+        14px;
+
+    align-items:
+        center;
+
+    padding:
+        18px 0;
+
+    border-bottom:
+        1px solid rgba(148,
+            163,
+            184,
+            0.1);
+}
+
+
+.contact-detail-icon {
+    width:
+        44px;
+
+    height:
+        44px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid rgba(56,
+            189,
+            248,
+            0.16);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(14,
+            165,
+            233,
+            0.06);
+
+    color:
+        #67e8f9;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-weight:
+        700;
+}
+
+
+.contact-detail span,
+.contact-status>div>span {
+    display:
+        block;
+
+    margin-bottom:
+        4px;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        700;
+}
+
+
+.contact-detail a,
+.contact-detail p,
+.contact-status p {
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        0.86rem;
+
+    line-height:
+        1.5;
+
+    text-decoration:
+        none;
+}
+
+
+.contact-detail a:hover {
+    color:
+        #67e8f9;
+}
+
+
+.contact-status {
+    display:
+        grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    gap:
+        12px;
+
+    align-items:
+        start;
+
+    margin-top:
+        22px;
+
+    padding:
+        18px;
+
+    border:
+        1px solid rgba(34,
+            197,
+            94,
+            0.16);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(34,
+            197,
+            94,
+            0.04);
+}
+
+
+.contact-status-dot {
+    width:
+        9px;
+
+    height:
+        9px;
+
+    margin-top:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        #22c55e;
+
+    box-shadow:
+        0 0 14px rgba(34,
+            197,
+            94,
+            0.7);
+
+    animation:
+        contactStatusPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PROFESSIONAL LINKS
+========================================================= */
+
+.contact-links {
+    display:
+        grid;
+
+    gap:
+        10px;
+}
+
+
+.contact-links a {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    min-height:
+        48px;
+
+    padding:
+        0 15px;
+
+    border:
+        1px solid rgba(148,
+            163,
+            184,
+            0.12);
+
+    border-radius:
+        11px;
+
+    background:
+        rgba(15,
+            23,
+            42,
+            0.48);
+
+    color:
+        #cbd5e1;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:
+        0.72rem;
+
+    text-decoration:
+        none;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.contact-links a:hover {
+    transform:
+        translateX(4px);
+
+    border-color:
+        rgba(56,
+            189,
+            248,
+            0.34);
+
+    background:
+        rgba(14,
+            165,
+            233,
+            0.07);
+
+    color:
+        #67e8f9;
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.contact-reveal {
+    opacity:
+        0;
+
+    transform:
+        translateY(28px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.16,
+            1,
+            0.3,
+            1);
+}
+
+
+.contact-visible .contact-reveal {
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.contact-visible .contact-form-card {
+    transition-delay:
+        0.08s;
+}
+
+
+.contact-visible .contact-info-card {
+    transition-delay:
+        0.16s;
+}
+
+
+.contact-visible .contact-links-card {
+    transition-delay:
+        0.24s;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes contactPacketTravel {
+
+    0% {
+        left:
+            0;
+
+        opacity:
+            0;
+    }
+
+    8% {
+        opacity:
+            1;
+    }
+
+    92% {
+        opacity:
+            1;
+    }
+
+    100% {
+        left:
+            100%;
+
+        opacity:
+            0;
+    }
+
+}
+
+
+@keyframes contactStatusPulse {
+
+    0%,
+    100% {
+        opacity:
+            0.55;
+
+        transform:
+            scale(0.9);
+    }
+
+    50% {
+        opacity:
+            1;
+
+        transform:
+            scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+html[data-theme="light"] .contact-section {
+    color:
+        #0f172a;
+
+    background:
+        linear-gradient(180deg,
+            #f8fafc,
+            #eef6ff);
+}
+
+
+html[data-theme="light"] .contact-form-card,
+
+html[data-theme="light"] .contact-info-card,
+
+html[data-theme="light"] .contact-links-card {
+    background:
+        rgba(255,
+            255,
+            255,
+            0.88);
+
+    box-shadow:
+        0 28px 70px rgba(15,
+            23,
+            42,
+            0.08);
+}
+
+
+html[data-theme="light"] .contact-header h2,
+
+html[data-theme="light"] .contact-card-heading h3,
+
+html[data-theme="light"] .contact-detail span,
+
+html[data-theme="light"] .contact-status>div>span {
+    color:
+        #0f172a;
+}
+
+
+html[data-theme="light"] .contact-form-card input,
+
+html[data-theme="light"] .contact-form-card textarea {
+    background:
+        rgba(248,
+            250,
+            252,
+            0.9);
+
+    color:
+        #0f172a;
+}
+
+
+html[data-theme="light"] .contact-links a {
+    background:
+        rgba(248,
+            250,
+            252,
+            0.8);
+
+    color:
+        #334155;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+
+    .contact-layout {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .contact-side {
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+            auto;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 680px) {
+
+    .contact-section {
+        padding:
+            100px 20px 78px;
+    }
+
+
+    .contact-header {
+        margin-bottom:
+            36px;
+    }
+
+
+    .contact-header h2 {
+        font-size:
+            clamp(3rem,
+                17vw,
+                5rem);
+    }
+
+
+    .contact-layout,
+    .contact-side {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .contact-form-card,
+    .contact-info-card,
+    .contact-links-card {
+        padding:
+            24px;
+    }
+
+
+    .contact-card-heading {
+        flex-direction:
+            column;
+    }
+
+
+    .contact-endpoint {
+        align-self:
+            flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-reveal,
+    .contact-submit,
+    .contact-links a {
+        transition:
+            none !important;
+    }
+
+
+    .contact-packet,
+    .contact-status-dot {
+        animation:
+            none !important;
+    }
+
+}
+
+
+/* =========================================================
+   CONTACT READABILITY + SOCIAL ICON POLISH
+========================================================= */
+
+/* Header helper sentence */
+.contact-header p {
+    color: #d6deea;
+    font-size: 1.08rem;
+    font-weight: 500;
+}
+
+/* Small terminal / system labels */
+.contact-number,
+.contact-terminal-label,
+.contact-card-kicker,
+.contact-form-card label>span {
+    color: #67e8f9;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.14);
+}
+
+/* Endpoint pill */
+.contact-endpoint {
+    color: #a9b8ca;
+    font-size: 0.64rem;
+}
+
+/* Form input readability */
+.contact-form-card input,
+.contact-form-card textarea {
+    color: #f8fafc;
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.contact-form-card input::placeholder,
+.contact-form-card textarea::placeholder {
+    color: #7f90a6;
+    opacity: 1;
+}
+
+/* Connection-detail secondary text */
+.contact-detail a,
+.contact-detail p,
+.contact-status p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+}
+
+/* Submit/status text */
+.contact-submit {
+    font-size: 0.8rem;
+}
+
+.contact-submit-status {
+    color: #a5f3fc;
+    font-size: 0.7rem;
+}
+
+/* Bottom-right professional links */
+.contact-links a {
+    color: #e2e8f0;
+    font-size: 0.78rem;
+}
+
+.contact-link-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-social-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #67e8f9;
+    filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.18));
+}
+
+.contact-links a:hover .contact-social-icon {
+    color: #ffffff;
+}
+
+html[data-theme="light"] .contact-header p,
+html[data-theme="light"] .contact-detail a,
+html[data-theme="light"] .contact-detail p,
+html[data-theme="light"] .contact-status p {
+    color: #475569;
+}
+
+html[data-theme="light"] .contact-social-icon {
+    color: #0284c7;
+}
+
+
+/* =========================================================
+   HIGH-CONTRAST READABILITY FIX
+   ---------------------------------------------------------
+   This block intentionally overrides the earlier subtle
+   terminal styling. The goal is simple:
+   every important label must be readable immediately.
+========================================================= */
+
+/* ---------------------------------------------------------
+   SECTION SUPPORTING TEXT
+--------------------------------------------------------- */
+
+.contact-header p {
+    color: #e2e8f0 !important;
+    font-size: 1.12rem !important;
+    font-weight: 600 !important;
+    line-height: 1.7 !important;
+}
+
+
+/* ---------------------------------------------------------
+   SMALL SYSTEM / TERMINAL LABELS
+--------------------------------------------------------- */
+
+.contact-number,
+.contact-terminal-label,
+.contact-card-kicker,
+.contact-form-card label>span {
+    color: #7dd3fc !important;
+
+    font-family:
+        "Courier New",
+        monospace !important;
+
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.11em !important;
+
+    opacity: 1 !important;
+
+    text-shadow:
+        0 0 10px rgba(56, 189, 248, 0.22) !important;
+}
+
+
+/* Make "$ compose_message" stand out a little more */
+.contact-terminal-label {
+    color: #67e8f9 !important;
+    font-size: 0.9rem !important;
+}
+
+
+/* ---------------------------------------------------------
+   MAIN CARD TITLES
+--------------------------------------------------------- */
+
+.contact-card-heading h3 {
+    color: #ffffff !important;
+    font-size: 1.85rem !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+}
+
+
+/* ---------------------------------------------------------
+   ENDPOINT STATUS
+--------------------------------------------------------- */
+
+.contact-endpoint {
+    color: #dbeafe !important;
+
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+
+    border-color: rgba(103, 232, 249, 0.34) !important;
+    background: rgba(8, 47, 73, 0.42) !important;
+}
+
+.contact-endpoint-ready {
+    color: #a5f3fc !important;
+}
+
+.contact-endpoint-ready .contact-endpoint-dot {
+    background: #22d3ee !important;
+
+    box-shadow:
+        0 0 12px rgba(34, 211, 238, 0.95) !important;
+}
+
+
+/* ---------------------------------------------------------
+   FORM INPUTS
+--------------------------------------------------------- */
+
+.contact-form-card input,
+.contact-form-card textarea {
+    color: #ffffff !important;
+
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    line-height: 1.55 !important;
+
+    border-color: rgba(148, 163, 184, 0.28) !important;
+
+    background:
+        rgba(15, 23, 42, 0.9) !important;
+}
+
+.contact-form-card input::placeholder,
+.contact-form-card textarea::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+.contact-form-card input:focus,
+.contact-form-card textarea:focus {
+    border-color: #38bdf8 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(56, 189, 248, 0.12),
+        0 0 28px rgba(56, 189, 248, 0.08) !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONNECTION DETAILS
+--------------------------------------------------------- */
+
+.contact-detail span,
+.contact-status>div>span {
+    color: #ffffff !important;
+    font-size: 0.92rem !important;
+    font-weight: 800 !important;
+}
+
+.contact-detail a,
+.contact-detail p,
+.contact-status p {
+    color: #d6deea !important;
+    font-size: 0.93rem !important;
+    font-weight: 500 !important;
+}
+
+.contact-card-kicker {
+    margin-bottom: 22px !important;
+}
+
+
+/* ---------------------------------------------------------
+   STATUS CARD
+--------------------------------------------------------- */
+
+.contact-status {
+    border-color: rgba(34, 197, 94, 0.28) !important;
+    background: rgba(34, 197, 94, 0.075) !important;
+}
+
+.contact-status-dot {
+    background: #22c55e !important;
+    box-shadow: 0 0 14px rgba(34, 197, 94, 0.85) !important;
+}
+
+
+/* ---------------------------------------------------------
+   FIND ME ONLINE
+--------------------------------------------------------- */
+
+.contact-links a {
+    color: #f1f5f9 !important;
+
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+
+    border-color: rgba(148, 163, 184, 0.22) !important;
+    background: rgba(15, 23, 42, 0.82) !important;
+}
+
+.contact-links a:hover {
+    color: #ffffff !important;
+    border-color: rgba(103, 232, 249, 0.55) !important;
+    background: rgba(14, 165, 233, 0.12) !important;
+}
+
+.contact-social-icon {
+    width: 21px !important;
+    height: 21px !important;
+    color: #67e8f9 !important;
+}
+
+
+/* ---------------------------------------------------------
+   SEND BUTTON
+--------------------------------------------------------- */
+
+.contact-submit {
+    min-height: 58px !important;
+
+    color: #ffffff !important;
+
+    font-size: 0.9rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.1em !important;
+
+    border: 1px solid #38bdf8 !important;
+
+    background:
+        linear-gradient(90deg,
+            rgba(14, 165, 233, 0.24),
+            rgba(34, 211, 238, 0.22)) !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.02) !important;
+}
+
+.contact-submit:hover {
+    background:
+        linear-gradient(90deg,
+            rgba(14, 165, 233, 0.38),
+            rgba(34, 211, 238, 0.34)) !important;
+
+    box-shadow:
+        0 12px 34px rgba(34, 211, 238, 0.18) !important;
+}
+
+
+/* ---------------------------------------------------------
+   TEMPORARY FORM STATUS
+--------------------------------------------------------- */
+
+.contact-submit-status {
+    color: #bae6fd !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+}
+
+
+/* ---------------------------------------------------------
+   CARD BORDERS
+--------------------------------------------------------- */
+
+.contact-form-card,
+.contact-info-card,
+.contact-links-card {
+    border-color: rgba(56, 189, 248, 0.24) !important;
+}
+
+
+/* ---------------------------------------------------------
+   LIGHT MODE READABILITY
+--------------------------------------------------------- */
+
+html[data-theme="light"] .contact-number,
+html[data-theme="light"] .contact-terminal-label,
+html[data-theme="light"] .contact-card-kicker,
+html[data-theme="light"] .contact-form-card label>span {
+    color: #0369a1 !important;
+    text-shadow: none !important;
+}
+
+html[data-theme="light"] .contact-card-heading h3,
+html[data-theme="light"] .contact-detail span,
+html[data-theme="light"] .contact-status>div>span {
+    color: #0f172a !important;
+}
+
+html[data-theme="light"] .contact-header p,
+html[data-theme="light"] .contact-detail a,
+html[data-theme="light"] .contact-detail p,
+html[data-theme="light"] .contact-status p {
+    color: #334155 !important;
+}
+
+html[data-theme="light"] .contact-links a {
+    color: #0f172a !important;
+}
+
+
+
+/* =========================================================
+   FONT CLARITY REFINEMENT
+   ---------------------------------------------------------
+   Courier New looked too thin at normal browser scale.
+   Use a cleaner system monospace stack for technical labels
+   and a modern system sans-serif stack for normal UI text.
+========================================================= */
+
+/* Clean technical / terminal labels */
+.contact-number,
+.contact-terminal-label,
+.contact-card-kicker,
+.contact-form-card label>span,
+.contact-endpoint,
+.contact-submit,
+.contact-submit-status,
+.contact-links a {
+    font-family:
+        "Cascadia Code",
+        "Cascadia Mono",
+        Consolas,
+        "SFMono-Regular",
+        Menlo,
+        Monaco,
+        monospace !important;
+
+    font-variant-ligatures:
+        none;
+}
+
+
+/* Normal readable UI text */
+.contact-header p,
+.contact-card-heading h3,
+.contact-form-card input,
+.contact-form-card textarea,
+.contact-detail span,
+.contact-detail a,
+.contact-detail p,
+.contact-status>div>span,
+.contact-status p {
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif !important;
+}
+
+
+/* Slightly reduce tracking on small terminal text */
+.contact-number,
+.contact-terminal-label,
+.contact-card-kicker,
+.contact-form-card label>span {
+    letter-spacing:
+        0.075em !important;
+}
+
+
+/* Form labels are easier to scan with a little more weight */
+.contact-form-card label>span {
+    font-size:
+        0.88rem !important;
+
+    font-weight:
+        700 !important;
+}
+
+
+/* Endpoint pill should stay compact but readable */
+.contact-endpoint {
+    font-size:
+        0.72rem !important;
+
+    font-weight:
+        700 !important;
+}
+
+
+/* Button should feel technical without looking pixelated */
+.contact-submit {
+    font-size:
+        0.88rem !important;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        0.065em !important;
+}
+
+
+/* Online links get a clean readable label */
+.contact-links a {
+    font-size:
+        0.86rem !important;
+
+    font-weight:
+        650 !important;
+
+    letter-spacing:
+        0.015em !important;
+}
+
+
+/* Section card headings are sans-serif for immediate readability */
+.contact-card-heading h3 {
+    font-size:
+        1.9rem !important;
+
+    font-weight:
+        750 !important;
+
+    letter-spacing:
+        -0.025em !important;
+}
+
+
+/* =========================================================
+   REAL FORMSPREE SUBMISSION STATES
+========================================================= */
+
+.contact-submit:disabled {
+    cursor: wait;
+    opacity: 0.78;
+    transform: none !important;
+}
+
+.contact-field-error {
+    margin-top: 2px;
+
+    color: #fda4af;
+
+    font-family:
+        "Cascadia Code",
+        "Cascadia Mono",
+        Consolas,
+        monospace;
+
+    font-size: 0.76rem;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.contact-submit-status {
+    display: grid;
+    gap: 5px;
+
+    margin: 2px 0 0;
+    padding: 13px 15px;
+
+    border-radius: 11px;
+
+    text-align: left;
+}
+
+.contact-submit-status strong {
+    font-family:
+        "Cascadia Code",
+        "Cascadia Mono",
+        Consolas,
+        monospace;
+
+    font-size: 0.78rem;
+    letter-spacing: 0.055em;
+}
+
+.contact-submit-status span {
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.contact-submit-success {
+    border:
+        1px solid rgba(34, 197, 94, 0.32);
+
+    background:
+        rgba(34, 197, 94, 0.07);
+
+    color:
+        #bbf7d0;
+}
+
+.contact-submit-error {
+    border:
+        1px solid rgba(251, 113, 133, 0.3);
+
+    background:
+        rgba(251, 113, 133, 0.07);
+
+    color:
+        #fecdd3;
+}
+
+html[data-theme="light"] .contact-field-error,
+html[data-theme="light"] .contact-submit-error {
+    color: #be123c;
+}
+
+html[data-theme="light"] .contact-submit-success {
+    color: #166534;
+}
